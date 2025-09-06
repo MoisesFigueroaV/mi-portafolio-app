@@ -10,9 +10,11 @@ import { BookOpen } from "lucide-react"
 import Breadcrumbs from "@/components/breadcrumbs"
 import ScrollProgress from "@/components/scroll-progress"
 import SkipLinks from "@/components/skip-links"
+import { useLanguage } from "@/components/language-provider"
 
 export default function BlogPage() {
   const all = posts.slice().sort((a, b) => (a.updatedAt < b.updatedAt ? 1 : -1))
+  const { t, language } = useLanguage()
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -25,12 +27,12 @@ export default function BlogPage() {
       <ScrollProgress />
       <ViewerProvider>
         <PageShell>
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
-          <SectionRow label="Blog" hint="Todas las notas" icon={<BookOpen className="h-4 w-4" />}>
-            <h1 className="mb-6 text-3xl font-bold reveal-on-scroll">Blog</h1>
+          <Breadcrumbs items={[{ label: t("breadcrumb_home"), href: "/" }, { label: t("breadcrumb_blog") }]} />
+          <SectionRow label={t("blog")} hint={t("all_notes")} icon={<BookOpen className="h-4 w-4" />}>
+            <h1 className="mb-6 text-3xl font-bold reveal-on-scroll">{t("blog")}</h1>
             <div className="grid gap-4 sm:gap-3 sm:grid-cols-2">
               {all.map((p, i) => (
-                <div key={p.title} className="reveal-on-scroll" style={{ animationDelay: `${i * 100}ms` }}>
+                <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 100}ms` }}>
                   <EnhancedBlogCard post={p} delay={0} />
                 </div>
               ))}

@@ -2,10 +2,10 @@
 
 import { MapPin } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-import { timelineData, type TimelineItem } from "@/lib/page-content"
+import { timelineData } from "@/lib/page-content"
 
 export default function Timeline() {
-  const { t } = useLanguage() // Se mantiene para la etiqueta "Actual"
+  const { t, language } = useLanguage() // Se mantiene para la etiqueta "Actual"
 
   return (
     <div className="space-y-8">
@@ -23,13 +23,13 @@ export default function Timeline() {
               <span className="text-sm sm:text-xs text-white/60">{item.year}</span>
               {item.current && <span className="text-xs bg-white text-black px-2 py-0.5">{t("current")}</span>}
             </div>
-            <h3 className="font-bold text-base sm:text-sm text-white">{item.title}</h3>
-            <p className="text-base sm:text-sm text-white/80">{item.company}</p>
+            <h3 className="font-bold text-base sm:text-sm text-white">{item.title[language]}</h3>
+            <p className="text-base sm:text-sm text-white/80">{item.company[language]}</p>
             <div className="flex items-center gap-1 mt-1 text-sm sm:text-xs text-white/60">
               <MapPin className="h-4 w-4 sm:h-3 sm:w-3" />
-              {item.location}
+              {item.location[language]}
             </div>
-            <p className="text-base sm:text-sm text-white/80 mt-2 leading-relaxed">{item.description}</p>
+            <p className="text-base sm:text-sm text-white/80 mt-2 leading-relaxed">{item.description[language]}</p>
           </div>
         </div>
       ))}

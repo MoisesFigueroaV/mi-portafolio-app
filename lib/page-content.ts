@@ -1,3 +1,4 @@
+import type { LocalizedString } from "./content-manager";
 
 // 🎯 CONFIGURACIÓN PERSONAL - Edita aquí tu información
 export const personalInfo = {
@@ -34,34 +35,41 @@ export const personalInfo = {
 }
 
 // 💻 STACK TECNOLÓGICO - Edita aquí las tecnologías que usas
-export const techStackItems = [
+export type TechStackItem = {
+  name: LocalizedString;
+  description: LocalizedString;
+  tags: string[];
+  role: string;
+};
+
+export const techStackItems: TechStackItem[] = [
   {
-    name: "Astro",
-    description: "Framework web para construir sitios rápidos con menos JavaScript del lado del cliente.",
+    name: { es: "Astro", en: "Astro" },
+    description: { es: "Framework web para construir sitios rápidos con menos JavaScript del lado del cliente.", en: "Web framework to build fast sites with less client-side JavaScript. [TRANSLATE]" },
     tags: ["Islands", "MDX", "SSR"],
     role: "frontend",
   },
   {
-    name: "Next.js",
-    description: "El framework de React para producción. Ofrece renderizado híbrido, rutas basadas en archivos y más.",
+    name: { es: "Next.js", en: "Next.js" },
+    description: { es: "El framework de React para producción. Ofrece renderizado híbrido, rutas basadas en archivos y más.", en: "The React framework for production. It offers hybrid rendering, file-based routing, and more. [TRANSLATE]" },
     tags: ["RSC", "App Router"],
     role: "frontend",
   },
   {
-    name: "React + TypeScript",
-    description: "Una biblioteca de JavaScript para construir interfaces de usuario, con la seguridad de los tipos de TypeScript.",
+    name: { es: "React + TypeScript", en: "React + TypeScript" },
+    description: { es: "Una biblioteca de JavaScript para construir interfaces de usuario, con la seguridad de los tipos de TypeScript.", en: "A JavaScript library for building user interfaces, with the safety of TypeScript types. [TRANSLATE]" },
     tags: ["A11y", "Patterns"],
     role: "frontend",
   },
   {
-    name: "Tailwind CSS",
-    description: "Un framework de CSS de utilidad primero para un diseño rápido y personalizado sin salir de tu HTML.",
+    name: { es: "Tailwind CSS", en: "Tailwind CSS" },
+    description: { es: "Un framework de CSS de utilidad primero para un diseño rápido y personalizado sin salir de tu HTML.", en: "A utility-first CSS framework for rapid, custom design without leaving your HTML. [TRANSLATE]" },
     tags: ["Design System", "Tokens"],
     role: "tools",
   },
   {
-    name: "MDX/Markdown",
-    description: "Markdown para la era de los componentes. Permite usar componentes JSX en archivos de markdown.",
+    name: { es: "MDX/Markdown", en: "MDX/Markdown" },
+    description: { es: "Markdown para la era de los componentes. Permite usar componentes JSX en archivos de markdown.", en: "Markdown for the component era. It allows using JSX components in markdown files. [TRANSLATE]" },
     tags: ["Content"],
     role: "content",
   },
@@ -70,20 +78,20 @@ export const techStackItems = [
 // 🕒 EXPERIENCIA LABORAL - Edita aquí tu línea de tiempo
 export type TimelineItem = {
   year: string
-  title: string
-  company: string
-  location: string
-  description: string
+  title: LocalizedString
+  company: LocalizedString
+  location: LocalizedString
+  description: LocalizedString
   current?: boolean
 }
 
 export const timelineData: TimelineItem[] = [
     {
       year: "2025",
-      title: "Analista de datos",
-      company: "Sociedad Pesquera Landes S.A",
-      location: "Hibrido",
-      description: "Liderando el desarrollo de interfaces con React, Next.js y sistemas de diseño escalables.",
+      title: { es: "Analista de datos", en: "Data Analyst [TRANSLATE]" },
+      company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A [TRANSLATE]" },
+      location: { es: "Hibrido", en: "Hybrid [TRANSLATE]" },
+      description: { es: "Liderando el desarrollo de interfaces con React, Next.js y sistemas de diseño escalables.", en: "Leading the development of interfaces with React, Next.js and scalable design systems. [TRANSLATE]" },
       current: false,
     },
   ]

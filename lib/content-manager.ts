@@ -1,10 +1,15 @@
 // 🚀 GUÍA RÁPIDA PARA AGREGAR CONTENIDO
 
+export type LocalizedString = {
+  es: string
+  en: string
+}
+
 export type Project = {
   // ✅ OBLIGATORIO
-  title: string
-  subtitle: string
-  description: string
+  title: LocalizedString
+  subtitle: LocalizedString
+  description: LocalizedString
   image: string // Ruta: "/images/proyecto-nombre.jpg"
   updatedAt: string // Formato: "2024-01-15"
 
@@ -14,19 +19,19 @@ export type Project = {
 
   // ✅ OPCIONAL
   tags?: string[] // ["React", "TypeScript", "API"]
-  body?: string // Contenido detallado en Markdown
+  body?: LocalizedString // Contenido detallado en Markdown
   featured?: boolean // true = aparece en homepage
 }
 
 export type Post = {
   // ✅ OBLIGATORIO
-  title: string
-  content: string // Contenido en Markdown
+  title: LocalizedString
+  content: LocalizedString // Contenido en Markdown
   updatedAt: string // Formato: "2024-01-15"
 
   // ✅ OPCIONAL
   readingTime?: string // "5 min"
-  excerpt?: string // Resumen corto
+  excerpt?: LocalizedString // Resumen corto
 }
 
 export type Photo = {

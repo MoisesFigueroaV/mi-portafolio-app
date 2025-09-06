@@ -7,7 +7,7 @@ import SectionRow from "@/components/section-row";
 import { EnhancedProjectCard, EnhancedBlogCard } from "@/components/enhanced-cards";
 import MediaMosaic from "@/components/media-mosaic";
 import { ViewerProvider } from "@/components/viewer-provider";
-import { getFeaturedProjects, getLatestPosts } from "@/lib/data";
+import { getFeaturedProjects, getLatestPosts } from "@/lib/data-helpers";
 import { photos } from "@/lib/images-data";
 import TechStack from "@/components/tech-stack";
 import ScrollProgress from "@/components/scroll-progress";
@@ -92,7 +92,7 @@ export default function Page() {
           >
             <div className="grid gap-6 sm:gap-4 sm:grid-cols-2">
               {featuredProjects.map((p, i) => (
-                <div key={p.title} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
+                <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
                   <EnhancedProjectCard project={p} delay={0} />
                 </div>
               ))}
@@ -117,7 +117,7 @@ export default function Page() {
           >
             <div className="grid gap-6 sm:gap-3 sm:grid-cols-2">
               {latestPosts.map((p, i) => (
-                <div key={p.title} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
+                <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
                   <EnhancedBlogCard post={p} delay={0} />
                 </div>
               ))}

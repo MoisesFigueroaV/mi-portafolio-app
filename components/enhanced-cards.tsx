@@ -3,10 +3,12 @@
 import { useState } from "react"
 import { useViewer } from "@/components/viewer-provider"
 import type { Project, Post } from "@/lib/content-manager"
+import { useLanguage } from "@/components/language-provider"
 
 export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; delay?: number }) {
   const { openProject } = useViewer()
   const [imageLoaded, setImageLoaded] = useState(false)
+  const { language } = useLanguage()
 
   return (
     <button
@@ -19,14 +21,14 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
       ].join(" ")}
       style={{ animationDelay: `${delay}ms` }}
-      aria-label={`Ver proyecto: ${project.title}`}
+      aria-label={`Ver proyecto: ${project.title[language]}`}
     >
       <figure className="relative overflow-hidden">
         {!imageLoaded && <div className="h-40 sm:h-32 md:h-40 w-full bg-white/10 animate-pulse" />}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image || "/placeholder.svg"}
-          alt={project.title}
+          alt={project.title[language]}
           className={`h-40 sm:h-32 md:h-40 w-full object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
@@ -38,11 +40,11 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
       <div className="p-4 sm:p-3">
         <div className="space-y-2 sm:space-y-1">
           <h3 className="text-base sm:text-sm font-bold group-hover:text-white transition-colors text-white/90">
-            {project.title}
+            {project.title[language]}
           </h3>
-          {project.subtitle && <p className="text-sm sm:text-xs text-white/60">{project.subtitle}</p>}
+          {project.subtitle && <p className="text-sm sm:text-xs text-white/60">{project.subtitle[language]}</p>}
           {project.description && (
-            <p className="line-clamp-2 text-sm sm:text-xs leading-relaxed text-white/60">{project.description}</p>
+            <p className="line-clamp-2 text-sm sm:text-xs leading-relaxed text-white/60">{project.description[language]}</p>
           )}
 
           <div className="flex flex-wrap gap-2 sm:gap-1.5 pt-2 sm:pt-1">
@@ -68,6 +70,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
 
 export function EnhancedBlogCard({ post, delay = 0 }: { post: Post; delay?: number }) {
   const { openPost } = useViewer()
+  const { language } = useLanguage()
 
   return (
     <button
@@ -80,15 +83,15 @@ export function EnhancedBlogCard({ post, delay = 0 }: { post: Post; delay?: numb
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
       ].join(" ")}
       style={{ animationDelay: `${delay}ms` }}
-      aria-label={`Leer post: ${post.title}`}
+      aria-label={`Leer post: ${post.title[language]}`}
     >
       <div className="flex items-start justify-between gap-4 sm:gap-3">
         <div className="min-w-0 flex-1">
           <h3 className="text-base sm:text-sm font-bold leading-tight group-hover:text-white transition-colors text-white/90">
-            {post.title}
+            {post.title[language]}
           </h3>
           {post.excerpt && (
-            <p className="mt-2 sm:mt-1 line-clamp-2 text-sm sm:text-xs leading-relaxed text-white/60">{post.excerpt}</p>
+            <p className="mt-2 sm:mt-1 line-clamp-2 text-sm sm:text-xs leading-relaxed text-white/60">{post.excerpt[language]}</p>
           )}
         </div>
         {post.readingTime && <span className="shrink-0 text-sm sm:text-xs text-white/60">{post.readingTime}</span>}

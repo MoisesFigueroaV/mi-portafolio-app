@@ -6,24 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Github, Clock, X } from "lucide-react"
 import MdxContent from "./mdx-content"
 import { useLanguage } from "@/components/language-provider"
-
-type Project = {
-  title: string
-  subtitle?: string
-  image?: string
-  tags?: string[]
-  description?: string
-  body?: string
-  siteUrl?: string
-  repoUrl?: string
-}
-
-type Post = {
-  title: string
-  readingTime?: string
-  excerpt?: string
-  content: string
-}
+import type { Project, Post } from "@/lib/content-manager"
 
 type ViewerState = { type: "project"; data: Project } | { type: "post"; data: Post } | null
 
@@ -148,26 +131,26 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
 }
 
 function ProjectContent(p: Project) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <article>
       <header className="mb-4">
-        <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title}</h2>
-        {p.subtitle && <p className="text-xs text-white/60 mt-1">{p.subtitle}</p>}
+        <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title[language]}</h2>
+        {p.subtitle && <p className="text-xs text-white/60 mt-1">{p.subtitle[language]}</p>}
       </header>
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={p.image || "/placeholder.svg"}
-        alt={`Vista de ${p.title}`}
+        alt={`Vista de ${p.title[language]}`}
         className="mb-4 sm:mb-5 w-full border border-white/20"
       />
 
       {p.body ? (
-        <MdxContent>{p.body}</MdxContent>
+        <MdxContent>{p.body[language]}</MdxContent>
       ) : p.description ? (
-        <p className="text-sm leading-relaxed">{p.description}</p>
+        <p className="text-sm leading-relaxed">{p.description[language]}</p>
       ) : null}
 
       {p.tags && p.tags.length > 0 && (
@@ -209,17 +192,18 @@ function ProjectContent(p: Project) {
 }
 
 function PostContent(p: Post) {
+  const { language } = useLanguage()
   return (
     <article>
       <header className="mb-3 sm:mb-4">
-        <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title[language]}</h2>
         <div className="mt-1 flex items-center gap-2 text-xs text-white/60">
           <Clock className="h-4 w-4" />
           <span>{p.readingTime}</span>
         </div>
-        {p.excerpt && <p className="mt-2 text-xs leading-relaxed text-white/60">{p.excerpt}</p>}
+        {p.excerpt && <p className="mt-2 text-xs leading-relaxed text-white/60">{p.excerpt[language]}</p>}
       </header>
-      <MdxContent>{p.content}</MdxContent>
+      <MdxContent>{p.content[language]}</MdxContent>
     </article>
   )
 }
