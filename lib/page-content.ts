@@ -39,7 +39,7 @@ export type TechStackItem = {
   name: LocalizedString;
   description: LocalizedString;
   tags: string[];
-  role: string;
+  role: "frontend" | "backend" | "tools" | "content";
 };
 
 export const techStackItems: TechStackItem[] = [
