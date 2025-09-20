@@ -7,6 +7,8 @@ export const projects: Project[] = [
     subtitle: { es: "Componentes accesibles y rápidos", en: "Accessible and fast components [TRANSLATE]" },
     description: { es: "Librería de componentes centrada en accesibilidad y rendimiento.", en: "Component library focused on accessibility and performance. [TRANSLATE]" },
     image: "/specular-ui-preview.png", // 📁 Sube tu imagen a public/
+    width: 1200,
+    height: 675,
     siteUrl: "https://specular-ui.com", // 🔗 Cambia por tu URL
     repoUrl: "https://github.com/tu-usuario/specular-ui", // 🔗 Cambia por tu repo
     tags: ["React", "Tailwind", "A11y"],
@@ -24,6 +26,8 @@ export const projects: Project[] = [
   //   subtitle: { es: "Descripción corta", en: "Short description" },
   //   description: { es: "Descripción más detallada del proyecto.", en: "More detailed project description." },
   //   image: "/mi-proyecto.png", // Sube la imagen a public/
+  //   width: 1200, // Ancho de la imagen
+  //   height: 675, // Alto de la imagen
   //   siteUrl: "https://mi-proyecto.com", // URL del sitio (opcional)
   //   repoUrl: "https://github.com/usuario/proyecto", // URL del repo (opcional)
   //   tags: ["React", "Next.js", "TypeScript"], // Tecnologías usadas
@@ -36,6 +40,8 @@ export const projects: Project[] = [
     subtitle: { es: "Notas con CRDT local-first", en: "Notes with local-first CRDT [TRANSLATE]" },
     description: { es: "Editor de notas resistente a conflictos, offline-first.", en: "Conflict-resistant, offline-first notes editor. [TRANSLATE]" },
     image: "/vector-notes-local-first-app.png",
+    width: 1200,
+    height: 675,
     siteUrl: "https://vector-notes.app",
     repoUrl: "https://github.com/tu-usuario/vector-notes",
     tags: ["Tauri", "CRDT", "Rust"],
@@ -48,6 +54,8 @@ export const projects: Project[] = [
     subtitle: { es: "Blog ultrarrápido con MDX", en: "Ultrafast blog with MDX [TRANSLATE]" },
     description: { es: "Contenido en MDX con métricas, OG automático y diseño monocromo.", en: "MDX content with metrics, automatic OG, and monochrome design. [TRANSLATE]" },
     image: "/monochrome-blog-mdx.png",
+    width: 1200,
+    height: 675,
     siteUrl: "https://monochrome-blog.com",
     repoUrl: "https://github.com/tu-usuario/monochrome-blog",
     tags: ["MDX", "Next.js", "SEO"],

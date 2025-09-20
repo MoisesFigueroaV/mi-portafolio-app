@@ -130,6 +130,8 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
+import Image from "next/image"
+
 function ProjectContent(p: Project) {
   const { t, language } = useLanguage()
 
@@ -140,11 +142,13 @@ function ProjectContent(p: Project) {
         {p.subtitle && <p className="text-xs text-white/60 mt-1">{p.subtitle[language]}</p>}
       </header>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={p.image || "/placeholder.svg"}
         alt={`Vista de ${p.title[language]}`}
+        width={p.width}
+        height={p.height}
         className="mb-4 sm:mb-5 w-full border border-white/20"
+        sizes="(max-width: 768px) 90vw, 800px"
       />
 
       {p.body ? (

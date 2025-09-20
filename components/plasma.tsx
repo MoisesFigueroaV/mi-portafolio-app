@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Renderer, Program, Mesh, Triangle } from "ogl"
 
 interface PlasmaProps {
@@ -108,6 +108,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
   const mountedRef = useRef(false)
+  const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -273,6 +274,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
       }
 
       raf = requestAnimationFrame(loop)
+      setIsReady(true)
 
       return () => {
         mountedRef.current = false
@@ -299,7 +301,14 @@ export const Plasma: React.FC<PlasmaProps> = ({
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive])
 
-  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />
+  return (
+    <div
+      ref={containerRef}
+      className={`w-full h-full relative overflow-hidden transition-opacity duration-1000 ${
+        isReady ? "opacity-100" : "opacity-0"
+      }`}
+    />
+  )
 }
 
 export default Plasma

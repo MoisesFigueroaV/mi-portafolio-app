@@ -6,6 +6,7 @@ import { personalInfo } from "@/lib/page-content"
 
 // 🚀 SEO OPTIMIZADO
 export const metadata: Metadata = {
+  metadataBase: new URL(personalInfo.website),
   title: {
     default: `${personalInfo.name} - ${personalInfo.title}`,
     template: `%s | ${personalInfo.name}`,
@@ -19,7 +20,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: personalInfo.website,
     title: `${personalInfo.name} - ${personalInfo.title}`,
     description: personalInfo.description,
     siteName: personalInfo.name,
@@ -62,9 +62,13 @@ export const metadata: Metadata = {
 
   // Canonical URL
   alternates: {
-    canonical: personalInfo.website,
+    canonical: "/",
+    languages: {
+      "es-ES": "/",
+      // "en-US": "/en-US", // Si tienes versión en inglés
+    },
   },
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

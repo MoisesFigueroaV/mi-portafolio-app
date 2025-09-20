@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { useViewer } from "@/components/viewer-provider"
 import type { Project, Post } from "@/lib/content-manager"
 import { useLanguage } from "@/components/language-provider"
@@ -13,7 +14,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
   return (
     <button
       onClick={() => openProject(project)}
-            className={[
+      className={[
         "group w-full overflow-hidden text-left",
         "bg-white/5 transition-all duration-300",
         "hover:-translate-y-1 hover:shadow-lg hover:bg-white/10",
@@ -27,11 +28,11 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
       {/* Columna de la imagen (1/3 del ancho) */}
       <figure className="relative w-1/3 overflow-hidden">
         {!imageLoaded && <div className="h-full w-full bg-white/10 animate-pulse" />}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title[language]}
-          className={`h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
+          fill
+          className={`object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
           onLoad={() => setImageLoaded(true)}
@@ -54,13 +55,13 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
             {project.tags?.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                                className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60"
+                className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60"
               >
                 {tag}
               </span>
             ))}
             {project.tags && project.tags.length > 3 && (
-              <span                 className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60">
+              <span className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60">
                 +{project.tags.length - 3}
               </span>
             )}

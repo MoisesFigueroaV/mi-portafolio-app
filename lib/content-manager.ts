@@ -12,6 +12,8 @@ export type Project = {
   description: LocalizedString
   image: string // Ruta: "/images/proyecto-nombre.jpg"
   updatedAt: string // Formato: "2024-01-15"
+  width: number // Ancho de la imagen en píxeles
+  height: number // Alto de la imagen en píxeles
 
   // ✅ ENLACES (al menos uno)
   siteUrl?: string // URL del sitio web
@@ -38,6 +40,8 @@ export type Photo = {
   // ✅ OBLIGATORIO
   src: string // Ruta: "/photos/foto-nombre.jpg"
   alt: string // Descripción para accesibilidad
+  width: number // Ancho de la imagen en píxeles
+  height: number // Alto de la imagen en píxeles
 }
 
 /* 
