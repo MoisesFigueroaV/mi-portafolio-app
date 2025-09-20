@@ -193,7 +193,7 @@ export default function Page() {
                   <span className="sm:hidden">GitHub</span>
                 </a>
                 <a
-                  href="/cv.pdf"
+                  href="/cv/CV_MoisesFigueroa.pdf"
                   target="_blank"
                   rel="noreferrer"
                                     className="inline-flex items-center gap-2 sm:gap-1 bg-white px-4 py-3 sm:px-3 sm:py-2 text-sm sm:text-xs text-black hover:bg-white/90 active:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"

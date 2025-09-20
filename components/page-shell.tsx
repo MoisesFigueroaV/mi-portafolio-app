@@ -33,7 +33,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
 
           {/* Contenido principal */}
           <section className="col-span-12 lg:col-span-9">
-            <div className="mx-auto max-w-3xl">{children}</div>
+            <div className="mx-auto">{children}</div>
           </section>
         </div>
       </div>
