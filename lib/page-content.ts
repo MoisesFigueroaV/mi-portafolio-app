@@ -4,15 +4,20 @@ import type { LocalizedString } from "./content-manager";
 export const personalInfo = {
   // Información básica
   name: "Moisés Esteban Figueroa Valenzuela",
-  title: "Desarrollador de Software",
-  description: "Creo interfaces sobrias y rápidas. Me interesan los sistemas de diseño, accesibilidad y performance.",
+  title: "Analista de Datos y Desarrollador Full-Stack",
+  description: "Soy Moisés Figueroa, Analista de Datos y Desarrollador Full-Stack de Concepción, Chile. Me motiva explorar cómo la tecnología puede transformar ideas en soluciones prácticas y resolver problemas complejos. Siempre busco aprender nuevas herramientas y aplicarlas en proyectos reales.",
+  description_en: "I am Moisés Figueroa, a Data Analyst and Full-Stack Developer from Concepción, Chile. I am motivated by exploring how technology can transform ideas into practical solutions and solve complex problems. I am always looking to learn new tools and apply them in real projects.",
+  intro_2: "Disfruto desarrollando aplicaciones web con Astro, Next.js, React y TypeScript, creando interfaces modernas y funcionales. También diseño tooling ligero que mejora mis flujos de trabajo y la experiencia de desarrollo.",
+  intro_2_en: "I enjoy developing web applications with Astro, Next.js, React and TypeScript, creating modern and functional interfaces. I also design lightweight tooling that improves my workflows and the development experience.",
+  intro_3: "Actualmente me estoy especializando en análisis de datos a través de la certificación profesional de Google Data Analytics. Mi objetivo es unir esta área con mis conocimientos en desarrollo web, construyendo aplicaciones que integren visualización, datos y usabilidad. Si llegaste hasta aquí, conversemos: mándame un correo y cuéntame tu idea, te responderé pronto.",
+  intro_3_en: "I am currently specializing in data analysis through the Google Data Analytics professional certification. My goal is to unite this area with my knowledge in web development, building applications that integrate visualization, data and usability. If you made it this far, let's talk: send me an email and tell me your idea, I'll answer you soon.",
 
   // URLs y enlaces
   email: "moises.figueroavalenzuela@gmail.com",
   website: "https://tudominio.com",
   github: "https://github.com/MoisesFigueroaV",
   twitter: "https://twitter.com/tu-usuario",
-  linkedin: "https://linkedin.com/in/tu-usuario",
+  linkedin: "https://www.linkedin.com/in/moisesfigueroavalen",
 
   // Ubicación
   location: {
@@ -121,10 +126,10 @@ export type TimelineItem = {
 export const timelineData: TimelineItem[] = [
     {
       year: "2025",
-      title: { es: "Analista de datos", en: "Data Analyst [TRANSLATE]" },
-      company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A [TRANSLATE]" },
-      location: { es: "Hibrido", en: "Hybrid [TRANSLATE]" },
-      description: { es: "Liderando el desarrollo de interfaces con React, Next.js y sistemas de diseño escalables.", en: "Leading the development of interfaces with React, Next.js and scalable design systems. [TRANSLATE]" },
+      title: { es: "Analista de Datos", en: "Data Analyst" },
+      company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A" },
+      location: { es: "Concepción, Chile", en: "Concepción, Chile" },
+      description: { es: "Implementé un proceso completo de ETL para integrar y depurar datos de diversas fuentes. Diseñé y desarrollé un Dashboard integral en Power BI, centralizando KPIs clave que automatizó la generación de reportes y análisis. Realicé análisis de tendencias sobre la rotación de personal, identificando factores clave para proponer estrategias de retención más efectivas.", en: "Implemented a complete ETL process to integrate and debug data from various sources. Designed and developed a comprehensive Power BI Dashboard, centralizing key KPIs that automated report generation and analysis. Performed trend analysis on personnel turnover, identifying key factors to propose more effective retention strategies." },
       current: false,
     },
   ]

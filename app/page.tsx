@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Space_Mono } from "next/font/google";
-import { BookOpen, Code, ExternalLink, Github, Mail, Terminal, Camera, User } from "lucide-react";
+import { BookOpen, Code, ExternalLink, Github, Mail, Terminal, Camera, User, Linkedin } from "lucide-react";
 import PageShell from "@/components/page-shell";
 import SectionRow from "@/components/section-row";
 import { EnhancedProjectCard, EnhancedBlogCard } from "@/components/enhanced-cards";
@@ -24,7 +24,7 @@ const spaceMono = Space_Mono({
 });
 
 export default function Page() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const featuredProjects = getFeaturedProjects(4);
   const latestPosts = getLatestPosts(4);
   const photosPreview = photos.slice(0, 6);
@@ -64,18 +64,18 @@ export default function Page() {
             className="reveal mt-6 sm:mt-8 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             style={{ animationDelay: "180ms" }}
           >
-            <p className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll">{t("intro_1")}</p>
+            <p className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll">{language === "es" ? personalInfo.description : personalInfo.description_en}</p>
             <p
               className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll"
               style={{ animationDelay: "100ms" }}
             >
-              {t("intro_2")}
+              {language === "es" ? personalInfo.intro_2 : personalInfo.intro_2_en}
             </p>
             <p
               className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll"
               style={{ animationDelay: "200ms" }}
             >
-              {t("intro_3")}
+              {language === "es" ? personalInfo.intro_3 : personalInfo.intro_3_en}
             </p>
           </div>
 
@@ -191,6 +191,16 @@ export default function Page() {
                   <Github className="h-5 w-5 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">{t("github_handle")}</span>
                   <span className="sm:hidden">GitHub</span>
+                </a>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                >
+                  <Linkedin className="h-5 w-5 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">LinkedIn</span>
+                  <span className="sm:hidden">LinkedIn</span>
                 </a>
                 <a
                   href="/cv/CV_MoisesFigueroa.pdf"

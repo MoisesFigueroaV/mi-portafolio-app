@@ -14,9 +14,7 @@ export const translations = {
     designer_developer: "{name} — {title}",
 
     // Intro paragraphs
-    intro_1: "{description}",
-    intro_2: "Desarrollo con Astro, Next.js, React, TypeScript y CSS. También construyo tooling ligero.",
-    intro_3: "Si llegaste hasta aquí, charlemos. Envíame un correo y cuéntame tu idea. Respondo pronto.",
+    
 
     // Sections
     selection: "Selección",

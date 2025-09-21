@@ -8,7 +8,7 @@ export type StackItem = {
   name: LocalizedString
   description: LocalizedString
   tags?: string[]
-  role?: "frontend" | "backend" | "tools" | "content"
+  role?: "frontend" | "backend" | "tools" | "content" | "database" | "data";
 }
 
 export default function TechStack({
