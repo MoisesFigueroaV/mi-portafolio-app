@@ -175,13 +175,12 @@ export default function Page() {
           <SectionRow id="contact" label={t("contact")} hint={t("lets_work_together")} spacing="xl">
             <div className="space-y-6 reveal-on-scroll">
               <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 sm:gap-3">
-                <a
-                  href={`mailto:${personalInfo.email}?subject=Hola!%20Tengo%20un%20proyecto&body=Hola,%0A%0AMe%20gustaría%20hablar%20contigo%20sobre%20un%20proyecto.%0A%0AGracias!`}
-                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                <span
+                  className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white"
                 >
                   <Mail className="h-5 w-5 sm:h-4 sm:w-4" />
-                  <span>{t("email")}</span>
-                </a>
+                  <span>{personalInfo.email}</span>
+                </span>
                 <a
                   href={personalInfo.github}
                   target="_blank"

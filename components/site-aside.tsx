@@ -20,12 +20,11 @@ export default function SiteAside() {
         <h3 className="mb-2 font-bold uppercase tracking-wide text-white/80">{t("contact")}</h3>
         <ul className="space-y-1">
           <li>
-            <a
-              href={`mailto:${personalInfo.email}?subject=Hola!%20Tengo%20un%20proyecto&body=Hola,%0A%0AMe%20gustaría%20hablar%20contigo%20sobre%20un%20proyecto.%0A%0AGracias!`}
-              className="underline hover:text-white/80"
+            <span
+              className="underline"
             >
-              {t("email")}
-            </a>
+              {personalInfo.email}
+            </span>
           </li>
         </ul>
       </section>
