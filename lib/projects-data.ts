@@ -3,9 +3,9 @@ import type { Project } from "./content-manager"
 // 🎯 PROYECTOS - Agrega/edita aquí tus proyectos
 export const projects: Project[] = [
   {
-    title: { es: "Specular UI", en: "Specular UI [TRANSLATE]" },
-    subtitle: { es: "Componentes accesibles y rápidos", en: "Accessible and fast components [TRANSLATE]" },
-    description: { es: "Librería de componentes centrada en accesibilidad y rendimiento.", en: "Component library focused on accessibility and performance. [TRANSLATE]" },
+    title: { es: "Specular UI", en: "Specular UI" },
+    subtitle: { es: "Componentes accesibles y rápidos", en: "Accessible and fast components" },
+    description: { es: "Librería de componentes centrada en accesibilidad y rendimiento.", en: "Component library focused on accessibility and performance." },
     image: "/specular-ui-preview.png", // 📁 Sube tu imagen a public/
     width: 1200,
     height: 675,
@@ -36,9 +36,9 @@ export const projects: Project[] = [
   // },
 
   {
-    title: { es: "Vector Notes", en: "Vector Notes [TRANSLATE]" },
-    subtitle: { es: "Notas con CRDT local-first", en: "Notes with local-first CRDT [TRANSLATE]" },
-    description: { es: "Editor de notas resistente a conflictos, offline-first.", en: "Conflict-resistant, offline-first notes editor. [TRANSLATE]" },
+    title: { es: "Vector Notes", en: "Vector Notes" },
+    subtitle: { es: "Notas con CRDT local-first", en: "Notes with local-first CRDT" },
+    description: { es: "Editor de notas resistente a conflictos, offline-first.", en: "Conflict-resistant, offline-first notes editor." },
     image: "/vector-notes-local-first-app.png",
     width: 1200,
     height: 675,
@@ -50,9 +50,9 @@ export const projects: Project[] = [
   },
 
   {
-    title: { es: "Monochrome Blog", en: "Monochrome Blog [TRANSLATE]" },
-    subtitle: { es: "Blog ultrarrápido con MDX", en: "Ultrafast blog with MDX [TRANSLATE]" },
-    description: { es: "Contenido en MDX con métricas, OG automático y diseño monocromo.", en: "MDX content with metrics, automatic OG, and monochrome design. [TRANSLATE]" },
+    title: { es: "Monochrome Blog", en: "Monochrome Blog" },
+    subtitle: { es: "Blog ultrarrápido con MDX", en: "Ultrafast blog with MDX" },
+    description: { es: "Contenido en MDX con métricas, OG automático y diseño monocromo.", en: "MDX content with metrics, automatic OG, and monochrome design." },
     image: "/monochrome-blog-mdx.png",
     width: 1200,
     height: 675,

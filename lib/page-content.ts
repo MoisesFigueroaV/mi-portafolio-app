@@ -16,7 +16,7 @@ export const personalInfo = {
   email: "moises.figueroavalenzuela@gmail.com",
   website: "https://tudominio.com",
   github: "https://github.com/MoisesFigueroaV",
-  twitter: "https://twitter.com/tu-usuario",
+  twitter: "https://x.com/Moises_Figue26",
   linkedin: "https://www.linkedin.com/in/moisesfigueroavalen",
 
   // Ubicación

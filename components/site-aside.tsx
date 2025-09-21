@@ -43,6 +43,11 @@ export default function SiteAside() {
               {t("twitter_link")}
             </a>
           </li>
+          <li>
+            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="underline hover:text-white/80">
+              {t("linkedin_link")}
+            </a>
+          </li>
         </ul>
       </section>
     </div>

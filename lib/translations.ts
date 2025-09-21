@@ -38,7 +38,7 @@ export const translations = {
     viewer: "{ viewer }",
 
     // Contact
-    email: "{email}",
+    email: "Email",
     github_handle: "{github_handle}",
     cv: "CV",
 
@@ -49,6 +49,7 @@ export const translations = {
     navigation: "Navigation",
     github_link: "github",
     twitter_link: "twitter",
+    linkedin_link: "linkedin",
 
     // Timeline
     current: "Actual",
@@ -134,7 +135,7 @@ export const translations = {
     viewer: "{ viewer }",
 
     // Contact
-    email: "{email}",
+    email: "Email",
     github_handle: "{github_handle}",
     cv: "CV",
 
@@ -145,6 +146,7 @@ export const translations = {
     navigation: "Navigation",
     github_link: "github",
     twitter_link: "twitter",
+    linkedin_link: "linkedin",
 
     // Timeline
     current: "Current",
@@ -184,13 +186,12 @@ export const translations = {
     breadcrumb_home: "Home",
     breadcrumb_projects: "Projects",
     breadcrumb_blog: "Blog",
-    breadcrumb_photos: "Photos",
+    breadcrumb_photos: "Fotos",
 
     // Page titles
     all_projects: "All projects",
   },
-} as const
+};
 
-
-export type Language = keyof typeof translations
-export type TranslationKey = keyof typeof translations.es
+export type Language = keyof typeof translations;
+export type TranslationKey = keyof typeof translations.es;
