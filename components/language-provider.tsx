@@ -40,7 +40,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }
 
   const t = (key: TranslationKey): string => {
-    let translation = translations[language]?.[key] || translations.es[key] || key
+    let translation: string = translations[language]?.[key] || translations.es[key] || key
 
     const replacements = {
       ...personalInfo,

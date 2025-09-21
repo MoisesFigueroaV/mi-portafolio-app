@@ -39,39 +39,72 @@ export type TechStackItem = {
   name: LocalizedString;
   description: LocalizedString;
   tags: string[];
-  role: "frontend" | "backend" | "tools" | "content";
+  role: "frontend" | "backend" | "tools" | "content" | "database" | "data";
 };
 
 export const techStackItems: TechStackItem[] = [
   {
-    name: { es: "Astro", en: "Astro" },
-    description: { es: "Framework web para construir sitios rápidos con menos JavaScript del lado del cliente.", en: "Web framework to build fast sites with less client-side JavaScript. [TRANSLATE]" },
-    tags: ["Islands", "MDX", "SSR"],
-    role: "frontend",
-  },
-  {
     name: { es: "Next.js", en: "Next.js" },
-    description: { es: "El framework de React para producción. Ofrece renderizado híbrido, rutas basadas en archivos y más.", en: "The React framework for production. It offers hybrid rendering, file-based routing, and more. [TRANSLATE]" },
-    tags: ["RSC", "App Router"],
+    description: { 
+      es: "Framework de React para construir aplicaciones web full-stack con App Router y Server Actions.", 
+      en: "React framework to build full-stack web apps with App Router and Server Actions." 
+    },
+    tags: ["Full-stack", "App Router", "RSC"],
     role: "frontend",
   },
   {
     name: { es: "React + TypeScript", en: "React + TypeScript" },
-    description: { es: "Una biblioteca de JavaScript para construir interfaces de usuario, con la seguridad de los tipos de TypeScript.", en: "A JavaScript library for building user interfaces, with the safety of TypeScript types. [TRANSLATE]" },
-    tags: ["A11y", "Patterns"],
+    description: { 
+      es: "Biblioteca para construir interfaces modernas con tipado estricto y patrones reutilizables.", 
+      en: "Library for building modern interfaces with strict typing and reusable patterns." 
+    },
+    tags: ["UI", "Patterns", "A11y"],
     role: "frontend",
   },
   {
     name: { es: "Tailwind CSS", en: "Tailwind CSS" },
-    description: { es: "Un framework de CSS de utilidad primero para un diseño rápido y personalizado sin salir de tu HTML.", en: "A utility-first CSS framework for rapid, custom design without leaving your HTML. [TRANSLATE]" },
-    tags: ["Design System", "Tokens"],
+    description: { 
+      es: "Framework de utilidades CSS para crear sistemas de diseño rápidos, consistentes y escalables.", 
+      en: "Utility-first CSS framework to create fast, consistent and scalable design systems." 
+    },
+    tags: ["Design System", "Tokens", "Variants"],
     role: "tools",
   },
   {
-    name: { es: "MDX/Markdown", en: "MDX/Markdown" },
-    description: { es: "Markdown para la era de los componentes. Permite usar componentes JSX en archivos de markdown.", en: "Markdown for the component era. It allows using JSX components in markdown files. [TRANSLATE]" },
-    tags: ["Content"],
-    role: "content",
+    name: { es: "Bun + Elysia.js", en: "Bun + Elysia.js" },
+    description: { 
+      es: "Entorno y framework ligero para construir APIs rápidas, seguras y tipadas con TypeScript.", 
+      en: "Runtime and lightweight framework to build fast, secure, and typed APIs with TypeScript." 
+    },
+    tags: ["Backend", "APIs", "TypeScript"],
+    role: "backend",
+  },
+  {
+    name: { es: "PostgreSQL + Drizzle ORM", en: "PostgreSQL + Drizzle ORM" },
+    description: { 
+      es: "Base de datos relacional con modelado de esquemas tipados y consultas optimizadas.", 
+      en: "Relational database with typed schema modeling and optimized queries." 
+    },
+    tags: ["SQL", "Schemas", "ORM"],
+    role: "database",
+  },
+  {
+    name: { es: "Supabase", en: "Supabase" },
+    description: { 
+      es: "Plataforma backend para autenticación, APIs en tiempo real y almacenamiento escalable.", 
+      en: "Backend platform for authentication, real-time APIs, and scalable storage." 
+    },
+    tags: ["Auth", "Realtime", "Storage"],
+    role: "backend",
+  },
+  {
+    name: { es: "Power BI + Python", en: "Power BI + Python" },
+    description: { 
+      es: "Herramientas para procesos ETL, análisis de datos y dashboards interactivos.", 
+      en: "Tools for ETL processes, data analysis, and interactive dashboards." 
+    },
+    tags: ["ETL", "Analytics", "Dashboards"],
+    role: "data",
   },
 ]
 

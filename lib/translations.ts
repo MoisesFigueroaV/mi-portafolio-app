@@ -45,7 +45,7 @@ export const translations = {
     cv: "CV",
 
     // Aside
-    address: "Address",
+    address: "Locación",
     location: "{city} — {country}\n{workMode}",
     social: "Social",
     navigation: "Navigation",
@@ -72,6 +72,7 @@ export const translations = {
     react_description: "Patrones compuestos, props polimórficas y tipos estrictos.",
     tailwind_description: "Sistemas de diseño rápidos con tokens utilitarios y variantes.",
     mdx_description: "Contenido con soporte de código resaltado y componentes.",
+    data_stack: "Power BI + Python (Pandas) + SQL | Procesos ETL, análisis de datos y construcción de dashboards interactivos para la toma de decisiones.",
 
     // Accessibility
     change_language: "Cambiar idioma",
@@ -167,6 +168,7 @@ export const translations = {
     react_description: "Compound patterns, polymorphic props and strict types.",
     tailwind_description: "Fast design systems with utility tokens and variants.",
     mdx_description: "Content with syntax highlighting and component support.",
+    data_stack: "Power BI + Python (Pandas) + SQL | ETL processes, data analysis, and building interactive dashboards for decision making.",
 
     // Accessibility
     change_language: "Change language",

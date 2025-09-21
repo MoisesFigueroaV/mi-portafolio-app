@@ -14,7 +14,10 @@ type SearchResult = {
   onClick: () => void
 }
 
+import { useLanguage } from "@/components/language-provider"
+
 export default function SearchBar({ onResultClick }: { onResultClick?: (result: SearchResult) => void }) {
+  const { language } = useLanguage()
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<SearchResult[]>([])
   const [isOpen, setIsOpen] = useState(false)
@@ -31,21 +34,21 @@ export default function SearchBar({ onResultClick }: { onResultClick?: (result: 
     // Buscar en proyectos
     projects.forEach((p) => {
       const matches =
-        p.title.toLowerCase().includes(lowerQuery) ||
-        p.description?.toLowerCase().includes(lowerQuery) ||
+        p.title[language].toLowerCase().includes(lowerQuery) ||
+        p.description[language]?.toLowerCase().includes(lowerQuery) ||
         p.tags?.some((tag) => tag.toLowerCase().includes(lowerQuery))
 
       if (matches) {
         searchResults.push({
           type: "project",
-          title: p.title,
-          description: p.description,
+          title: p.title[language],
+          description: p.description[language],
           tags: p.tags,
           onClick: () =>
             onResultClick?.({
               type: "project",
-              title: p.title,
-              description: p.description,
+              title: p.title[language],
+              description: p.description[language],
               tags: p.tags,
               onClick: () => {},
             }),
@@ -56,22 +59,22 @@ export default function SearchBar({ onResultClick }: { onResultClick?: (result: 
     // Buscar en posts
     posts.forEach((p) => {
       const matches =
-        p.title.toLowerCase().includes(lowerQuery) ||
-        p.excerpt?.toLowerCase().includes(lowerQuery) ||
-        p.content.toLowerCase().includes(lowerQuery)
+        p.title[language].toLowerCase().includes(lowerQuery) ||
+        p.excerpt?.[language]?.toLowerCase().includes(lowerQuery) ||
+        p.content[language].toLowerCase().includes(lowerQuery)
 
       if (matches) {
         searchResults.push({
           type: "post",
-          title: p.title,
-          excerpt: p.excerpt,
-          onClick: () => onResultClick?.({ type: "post", title: p.title, excerpt: p.excerpt, onClick: () => {} }),
+          title: p.title[language],
+          excerpt: p.excerpt?.[language],
+          onClick: () => onResultClick?.({ type: "post", title: p.title[language], excerpt: p.excerpt?.[language], onClick: () => {} }),
         })
       }
     })
 
     setResults(searchResults.slice(0, 6))
-  }, [query, onResultClick])
+  }, [query, onResultClick, language])
 
   return (
     <div className="relative">
