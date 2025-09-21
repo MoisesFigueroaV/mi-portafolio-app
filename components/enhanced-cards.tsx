@@ -20,13 +20,13 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
         "hover:-translate-y-1 hover:shadow-lg hover:bg-white/10",
         "active:translate-y-0 active:shadow-md",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
-        "flex items-stretch", // Contenedor Flex
+        "flex flex-col sm:flex-row items-stretch", // Contenedor Flex
       ].join(" ")}
       style={{ animationDelay: `${delay}ms` }}
       aria-label={`Ver proyecto: ${project.title[language]}`}
     >
       {/* Columna de la imagen (1/3 del ancho) */}
-      <figure className="relative w-1/3 overflow-hidden">
+      <figure className="relative w-full sm:w-1/3 h-48 sm:h-auto overflow-hidden">
         {!imageLoaded && <div className="h-full w-full bg-white/10 animate-pulse" />}
         <Image
           src={project.image || "/placeholder.svg"}
@@ -41,7 +41,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
       </figure>
 
       {/* Columna del contenido (2/3 del ancho) */}
-      <div className="w-2/3 p-4 sm:p-3 flex flex-col justify-center">
+      <div className="w-full sm:w-2/3 p-4 sm:p-3 flex flex-col justify-center">
         <div className="space-y-2 sm:space-y-1">
           <h3 className="text-base sm:text-sm font-bold group-hover:text-white transition-colors text-white/90">
             {project.title[language]}

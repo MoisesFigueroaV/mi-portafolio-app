@@ -28,6 +28,7 @@ export default function SectionRow({
 
   return (
     <section id={id} className={`reveal scroll-mt-20 sm:scroll-mt-24 ${pt}`} style={{ animationDelay: "120ms" }}>
+      <hr className="mb-12 sm:mb-10 lg:hidden border-white/20" />
       <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
         {/* Header móvil */}
         <div className="mb-6 sm:mb-4 lg:hidden">
