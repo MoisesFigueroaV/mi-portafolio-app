@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 import { Space_Mono } from "next/font/google";
-import { BookOpen, Code, ExternalLink, Github, Mail, Terminal, Camera, User, Linkedin } from "lucide-react";
+import { BookOpen, Code, ExternalLink, Github, Mail, Terminal, User, Linkedin } from "lucide-react";
 import PageShell from "@/components/page-shell";
 import SectionRow from "@/components/section-row";
 import { EnhancedProjectCard, EnhancedBlogCard } from "@/components/enhanced-cards";
-import MediaMosaic from "@/components/media-mosaic";
+// import MediaMosaic from "@/components/media-mosaic";
 import { ViewerProvider } from "@/components/viewer-provider";
 import { getFeaturedProjects, getLatestPosts } from "@/lib/data-helpers";
-import { photos } from "@/lib/images-data";
+// import { photos } from "@/lib/images-data";
 import TechStack from "@/components/tech-stack";
 import ScrollProgress from "@/components/scroll-progress";
 import SkipLinks from "@/components/skip-links";
@@ -16,6 +16,7 @@ import Timeline from "@/components/timeline";
 import MobileInfo from "@/components/mobile-info";
 import { personalInfo, techStackItems } from "@/lib/page-content";
 import { useLanguage } from "@/components/language-provider";
+import LanguageToggleWrapper from "@/components/language-toggle-wrapper"; // Added import
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function Page() {
   const { t, language } = useLanguage();
   const featuredProjects = getFeaturedProjects(4);
   const latestPosts = getLatestPosts(4);
-  const photosPreview = photos.slice(0, 6);
+  // const photosPreview = photos.slice(0, 6);
 
   return (
     <main
@@ -52,7 +53,7 @@ export default function Page() {
 
           {/* Título grande */}
           <h1
-            className="reveal text-left text-3xl xs:text-4xl md:text-5xl font-bold leading-tight text-white"
+            className="reveal text-left text-2xl xs:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-white"
             style={{ animationDelay: "120ms" }}
             id="intro"
           >
@@ -64,15 +65,15 @@ export default function Page() {
             className="reveal mt-6 sm:mt-8 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             style={{ animationDelay: "180ms" }}
           >
-            <p className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll">{language === "es" ? personalInfo.description : personalInfo.description_en}</p>
+            <p className="text-m lg:text-m leading-relaxed text-white/80 reveal-on-scroll">{language === "es" ? personalInfo.description : personalInfo.description_en}</p>
             <p
-              className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll"
+              className="text-m lg:text-m leading-relaxed text-white/80 reveal-on-scroll"
               style={{ animationDelay: "100ms" }}
             >
               {language === "es" ? personalInfo.intro_2 : personalInfo.intro_2_en}
             </p>
             <p
-              className="text-sm sm:text-base leading-relaxed text-white/80 reveal-on-scroll"
+              className="text-m lg:text-m leading-relaxed text-white/80 reveal-on-scroll"
               style={{ animationDelay: "200ms" }}
             >
               {language === "es" ? personalInfo.intro_3 : personalInfo.intro_3_en}
@@ -90,7 +91,7 @@ export default function Page() {
             spacing="xl"
             icon={<Code className="h-5 w-5 sm:h-4 sm:w-4" />}
           >
-                                    <div className="grid gap-6 sm:gap-4 sm:grid-cols-1">
+                                    <div className="grid gap-6 sm:gap-4 sm:grid-cols-1 lg:grid-cols-2">
               {featuredProjects.map((p, i) => (
                 <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
                   <EnhancedProjectCard project={p} delay={0} />
@@ -100,7 +101,7 @@ export default function Page() {
             <div className="mt-8 sm:mt-6 reveal-on-scroll text-center sm:text-left">
               <Link
                 href="/projects"
-                                className="inline-flex items-center gap-2 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white bg-white/5 hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                                className="inline-flex items-center gap-2 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
               >
                 {t("see_all_projects")}
               </Link>
@@ -115,7 +116,7 @@ export default function Page() {
             spacing="xl"
             icon={<BookOpen className="h-5 w-5 sm:h-4 sm:w-4" />}
           >
-                                    <div className="grid gap-6 sm:gap-3 md:grid-cols-2">
+                                    <div className="grid gap-6 sm:gap-3 md:grid-cols-2 lg:grid-cols-2">
               {latestPosts.map((p, i) => (
                 <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
                   <EnhancedBlogCard post={p} delay={0} />
@@ -125,7 +126,7 @@ export default function Page() {
             <div className="mt-8 sm:mt-6 reveal-on-scroll text-center sm:text-left">
               <Link
                 href="/blog"
-                                className="inline-flex items-center gap-2 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white bg-white/5 hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                                className="inline-flex items-center gap-2 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
               >
                 {t("see_more_blog")}
               </Link>
@@ -174,20 +175,20 @@ export default function Page() {
           {/* CONTACTO */}
           <SectionRow id="contact" label={t("contact")} hint={t("lets_work_together")} spacing="xl">
             <div className="space-y-6 reveal-on-scroll">
-              <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 sm:gap-3">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-start sm:items-center gap-6 sm:gap-3 lg:gap-4">
                 <span
-                  className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white"
+                  className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white"
                 >
-                  <Mail className="h-5 w-5 sm:h-4 sm:w-4" />
+                  <Mail className="h-6 w-6 sm:h-4 sm:w-4" />
                   <span>{personalInfo.email}</span>
                 </span>
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noreferrer"
-                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
                 >
-                  <Github className="h-5 w-5 sm:h-4 sm:w-4" />
+                  <Github className="h-6 w-6 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">{t("github_handle")}</span>
                   <span className="sm:hidden">GitHub</span>
                 </a>
@@ -195,9 +196,9 @@ export default function Page() {
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
                 >
-                  <Linkedin className="h-5 w-5 sm:h-4 sm:w-4" />
+                  <Linkedin className="h-6 w-6 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">LinkedIn</span>
                   <span className="sm:hidden">LinkedIn</span>
                 </a>
@@ -205,9 +206,9 @@ export default function Page() {
                   href="/cv/CV_MoisesFigueroa.pdf"
                   target="_blank"
                   rel="noreferrer"
-                                    className="inline-flex items-center gap-2 sm:gap-1 bg-white px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs text-black hover:bg-white/90 active:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                                    className="inline-flex items-center gap-2 sm:gap-1 bg-white px-5 py-4 text-lg sm:px-3 sm:py-2 sm:text-sm text-black hover:bg-white/90 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
                 >
-                  {t("cv")} <ExternalLink className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+                  {t("cv")} <ExternalLink className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
                 </a>
               </div>
             </div>

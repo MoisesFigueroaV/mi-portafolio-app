@@ -85,7 +85,7 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black text-white"
+            className="fixed inset-0 z-52 bg-black text-white"
             aria-modal="true"
             role="dialog"
           >
@@ -94,7 +94,7 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
               <button
                 ref={backBtnRef}
                 onClick={close}
-                className="inline-flex items-center gap-2 px-3 py-2 text-xs text-white border border-white/30 hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
+                className="hidden sm:inline-flex items-center gap-2 px-3 py-2 text-xs text-white border border-white/30 hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span className="hidden sm:inline">{t("back")}</span>
@@ -119,7 +119,7 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
               transition={{ duration: 0.28, ease: "easeOut" }}
               className="h-[calc(100vh-60px)] sm:h-[calc(100vh-64px)] overflow-y-auto px-3 py-4 sm:px-6 sm:py-6"
             >
-              <div className="mx-auto max-w-4xl">
+              <div className="mx-auto sm:max-w-4xl">
                 {state.type === "project" ? <ProjectContent {...state.data} /> : <PostContent {...state.data} />}
               </div>
             </motion.div>
@@ -139,7 +139,7 @@ function ProjectContent(p: Project) {
     <article>
       <header className="mb-4">
         <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title[language]}</h2>
-        {p.subtitle && <p className="text-xs text-white/60 mt-1">{p.subtitle[language]}</p>}
+                {/* Subtitle removed as per user request */}
       </header>
 
       <Image
@@ -160,7 +160,7 @@ function ProjectContent(p: Project) {
       {p.tags && p.tags.length > 0 && (
         <div className="mt-4 sm:mt-5 flex flex-wrap gap-2">
           {p.tags.map((t) => (
-            <span key={t} className="px-2 py-0.5 text-[10px] text-white/60 border border-white/20">
+            <span key={t} className="px-3 py-1.5 text-xs sm:text-sm text-white/60 border border-white/20">
               {t}
             </span>
           ))}
@@ -205,7 +205,7 @@ function PostContent(p: Post) {
           <Clock className="h-4 w-4" />
           <span>{p.readingTime}</span>
         </div>
-        {p.excerpt && <p className="mt-2 text-xs leading-relaxed text-white/60">{p.excerpt[language]}</p>}
+        {p.excerpt && <p className="mt-2 text-sm sm:text-base leading-relaxed text-white/60">{p.excerpt[language]}</p>}
       </header>
       <MdxContent>{p.content[language]}</MdxContent>
     </article>

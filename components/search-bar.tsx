@@ -79,14 +79,14 @@ export default function SearchBar({ onResultClick }: { onResultClick?: (result: 
   return (
     <div className="relative">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-[#4d4d4d]" />
+        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500 dark:text-[#4d4d4d] sm:left-3 sm:h-4 sm:w-4" />
         <input
           type="text"
           placeholder="Buscar proyectos, posts..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsOpen(true)}
-          className="w-full rounded-md border border-gray-300 bg-white pl-10 pr-10 py-2 text-sm focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:border-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#cccccc] dark:focus:border-[#cccccc]"
+          className="w-full rounded-md border border-gray-300 bg-white pl-12 pr-12 py-3 text-base focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:border-[#4d4d4d] dark:bg-[#1a1a1a] dark:text-[#cccccc] dark:focus:border-[#cccccc] sm:pl-10 sm:pr-10 sm:py-2 sm:text-sm"
         />
         {query && (
           <button
@@ -95,9 +95,9 @@ export default function SearchBar({ onResultClick }: { onResultClick?: (result: 
               setResults([])
               setIsOpen(false)
             }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-[#4d4d4d] dark:hover:text-[#cccccc]"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-[#4d4d4d] dark:hover:text-[#cccccc] sm:right-3"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5 sm:h-4 sm:w-4" />
           </button>
         )}
       </div>
@@ -111,16 +111,16 @@ export default function SearchBar({ onResultClick }: { onResultClick?: (result: 
                 result.onClick()
                 setIsOpen(false)
               }}
-              className="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-[#000000] first:rounded-t-md last:rounded-b-md"
+              className="w-full px-4 py-4 text-left hover:bg-gray-100 dark:hover:bg-[#000000] first:rounded-t-md last:rounded-b-md sm:py-3"
             >
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-[#4d4d4d]">
+                <span className="text-sm text-gray-500 dark:text-[#4d4d4d] sm:text-xs">
                   {result.type === "project" ? "Proyecto" : "Post"}
                 </span>
               </div>
-              <div className="font-medium text-sm">{result.title}</div>
+              <div className="font-medium text-base sm:text-sm">{result.title}</div>
               {(result.description || result.excerpt) && (
-                <div className="text-xs text-gray-500 dark:text-[#4d4d4d] mt-1 line-clamp-1">
+                <div className="text-sm text-gray-500 dark:text-[#4d4d4d] mt-1 line-clamp-1 sm:text-xs">
                   {result.description || result.excerpt}
                 </div>
               )}

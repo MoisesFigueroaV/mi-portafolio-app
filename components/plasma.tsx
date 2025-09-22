@@ -201,10 +201,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
           const rect = container.getBoundingClientRect()
           if (rect.width === 0 || rect.height === 0) return
 
-          // Mejor resolución en móvil para que se vea el efecto
-          const scale = isMobile ? 0.85 : 1
-          const width = Math.max(1, Math.floor(rect.width * scale))
-          const height = Math.max(1, Math.floor(rect.height * scale))
+          // Asegurar que el efecto de plasma siempre cubra el 100% del contenedor
+          const width = Math.max(1, Math.floor(rect.width))
+          const height = Math.max(1, Math.floor(rect.height))
 
           renderer.setSize(width, height)
 
@@ -256,11 +255,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
         try {
           if (direction === "pingpong" && program.uniforms.uDirection) {
             const cycle = Math.sin(timeValue * 0.4) * directionMultiplier
-            ;(program.uniforms.uDirection as any).value = cycle
+            program.uniforms.uDirection.value = cycle
           }
 
           if (program.uniforms.iTime) {
-            ;(program.uniforms.iTime as any).value = timeValue
+            program.uniforms.iTime.value = timeValue
           }
 
           renderer.render({ scene: mesh })

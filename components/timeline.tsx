@@ -8,9 +8,9 @@ export default function Timeline() {
   const { t, language } = useLanguage() // Se mantiene para la etiqueta "Actual"
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" role="list" aria-label={t("experience")}>
       {timelineData.map((item, i) => (
-        <div key={i} className="relative flex gap-6 reveal-on-scroll" style={{ animationDelay: `${i * 200}ms` }}>
+        <div key={i} className="relative flex gap-6 reveal-on-scroll" style={{ animationDelay: `${i * 200}ms` }} role="listitem">
           {/* Timeline line con puntos */}
           <div className="flex flex-col items-center pt-1.5">
             <div className={`w-2 h-2 rounded-full ${item.current ? "bg-white" : "bg-white/40"}`} />
@@ -19,17 +19,17 @@ export default function Timeline() {
 
           {/* Content */}
           <div className="flex-1 pb-8">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm sm:text-xs text-white/60">{item.year}</span>
-              {item.current && <span className="text-xs bg-white text-black px-2 py-0.5">{t("current")}</span>}
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-base sm:text-xs text-white/60">{item.year}</span>
+              {item.current && <span className="text-sm bg-white text-black px-3 py-1">{t("current")}</span>}
             </div>
-            <h3 className="font-bold text-base sm:text-sm text-white">{item.title[language]}</h3>
-            <p className="text-base sm:text-sm text-white/80">{item.company[language]}</p>
-            <div className="flex items-center gap-1 mt-1 text-sm sm:text-xs text-white/60">
-              <MapPin className="h-4 w-4 sm:h-3 sm:w-3" />
+            <h3 className="font-bold text-lg sm:text-sm text-white">{item.title[language]}</h3>
+            <p className="text-lg sm:text-sm text-white/80">{item.company[language]}</p>
+            <div className="flex items-center gap-1 mt-1 text-base sm:text-xs text-white/60">
+              <MapPin className="h-5 w-5 sm:h-3 sm:w-3" />
               {item.location[language]}
             </div>
-            <p className="text-base sm:text-sm text-white/80 mt-2 leading-relaxed">{item.description[language]}</p>
+            <p className="text-base sm:text-base text-white/80 mt-2 leading-relaxed">{item.description[language]}</p>
           </div>
         </div>
       ))}

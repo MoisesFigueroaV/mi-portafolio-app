@@ -1,14 +1,15 @@
 "use client"
 
-import { MapPin, Mail, Github, Twitter } from "lucide-react"
+import { MapPin, Mail, Github, Twitter, Linkedin } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import { personalInfo } from "@/lib/page-content"
 
 export default function MobileInfo() {
   const { t } = useLanguage()
 
   return (
     <div
-      className="reveal lg:hidden mt-8 space-y-6 p-4 border border-white/20 bg-white/5"
+      className="reveal lg:hidden mt-8 space-y-4 p-4 border border-white/20 bg-white/5"
       style={{ animationDelay: "240ms" }}
     >
       {/* Address */}
@@ -17,7 +18,7 @@ export default function MobileInfo() {
           <MapPin className="h-4 w-4" />
           {t("address")}
         </h3>
-        <p className="text-sm text-white/70 whitespace-pre-line">{t("location")}</p>
+        <p className="text-base text-white/70 whitespace-pre-line">{t("location")}</p>
       </section>
 
       {/* Contact */}
@@ -28,7 +29,7 @@ export default function MobileInfo() {
         </h3>
         <a
           href="mailto:hello@example.com?subject=Hola!%20Tengo%20un%20proyecto&body=Hola,%0A%0AMe%20gustaría%20hablar%20contigo%20sobre%20un%20proyecto.%0A%0AGracias!"
-          className="text-sm text-white/70 hover:text-white/90 underline"
+          className="text-lg text-white/70 hover:text-white/90 underline"
         >
           {t("email")}
         </a>
@@ -45,14 +46,18 @@ export default function MobileInfo() {
             href="https://github.com/"
             target="_blank"
             rel="noreferrer"
-            className="text-sm text-white/70 hover:text-white/90 underline flex items-center gap-1"
+            className="text-base text-white/70 hover:text-white/90 underline flex items-center gap-1"
           >
-            <Github className="h-3 w-3" />
+            <Github className="h-4 w-4" />
             {t("github_link")}
           </a>
-          <a href="#" className="text-sm text-white/70 hover:text-white/90 underline flex items-center gap-1">
-            <Twitter className="h-3 w-3" />
+          <a href={personalInfo.twitter} target="_blank" rel="noreferrer" className="text-base text-white/70 hover:text-white/90 underline flex items-center gap-1">
+            <Twitter className="h-4 w-4" />
             {t("twitter_link")}
+          </a>
+          <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-base text-white/70 hover:text-white/90 underline flex items-center gap-1">
+            <Linkedin className="h-4 w-4" />
+            {t("linkedin_link")}
           </a>
         </div>
       </section>

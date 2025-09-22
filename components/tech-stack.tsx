@@ -21,29 +21,29 @@ export default function TechStack({
   const { language } = useLanguage()
 
   return (
-    <div className="grid gap-6 sm:gap-4 sm:grid-cols-2">
+    <div className="grid gap-6 sm:gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {items.map((it, index) => (
         <div
           key={it.name.es}
-          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll"
+          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1"
           style={{ animationDelay: `${index * 150}ms` }}
         >
-          <div className="mb-2 sm:mb-1 flex items-center gap-2">
-            <BadgeCheck className="h-5 w-5 sm:h-4 sm:w-4 text-white" />
-            <h3 className="text-base sm:text-sm font-bold">{it.name[language]}</h3>
+          <div className="mb-3 sm:mb-1 flex items-center gap-2">
+            <BadgeCheck className="h-6 w-6 sm:h-4 sm:w-4 text-white" />
+            <h3 className="text-lg sm:text-sm font-bold">{it.name[language]}</h3>
           </div>
-          <p className="text-sm sm:text-xs text-white/70 leading-relaxed">{it.description[language]}</p>
-          <div className="mt-3 sm:mt-2 flex flex-wrap gap-2">
+          <p className="text-base sm:text-xs text-white/70 leading-relaxed">{it.description[language]}</p>
+          <div className="mt-4 sm:mt-2 flex flex-wrap gap-2">
             {it.tags?.map((t) => (
               <span
                 key={t}
-                className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60 border border-white/20"
+                className="px-3 py-1.5 sm:px-2 sm:py-0.5 text-sm sm:text-[10px] text-white/60 border border-white/20"
               >
                 {t}
               </span>
             ))}
             {it.role && (
-              <span className="px-2 py-1 sm:px-2 sm:py-0.5 text-xs sm:text-[10px] text-white/60 border border-white/20">
+              <span className="px-3 py-1.5 sm:px-2 sm:py-0.5 text-sm sm:text-[10px] text-white/60 border border-white/20">
                 {it.role}
               </span>
             )}
