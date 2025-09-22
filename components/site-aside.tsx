@@ -22,7 +22,7 @@ export default function SiteAside() {
           <li>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors hover:bg-white/10 hover:text-white/90"
+              className="underline transition-colors hover:text-white/80"
             >
               <span className="underline break-all">{personalInfo.email}</span>
             </a>
@@ -38,9 +38,9 @@ export default function SiteAside() {
               href={personalInfo.github} 
               target="_blank" 
               rel="noreferrer" 
-              className="inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors hover:bg-white/10 hover:text-white/90"
+              className="underline transition-colors hover:text-white/80"
             >
-              <span className="underline">{t("github_link")}</span>
+              {t("github_link")}
             </a>
           </li>
           <li>
@@ -48,7 +48,7 @@ export default function SiteAside() {
               href={personalInfo.twitter} 
               target="_blank" 
               rel="noreferrer" 
-              className="inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors hover:bg-white/10 hover:text-white/90"
+              className="underline transition-colors hover:text-white/80"
             >
               <span className="underline">{t("twitter_link")}</span>
             </a>
@@ -58,9 +58,9 @@ export default function SiteAside() {
               href={personalInfo.linkedin} 
               target="_blank" 
               rel="noreferrer" 
-              className="inline-flex items-center gap-2 rounded-md px-4 py-2 transition-colors hover:bg-white/10 hover:text-white/90"
+              className="underline transition-colors hover:text-white/80"
             >
-              <span className="underline">{t("linkedin_link")}</span>
+              {t("linkedin_link")}
             </a>
           </li>
         </ul>
