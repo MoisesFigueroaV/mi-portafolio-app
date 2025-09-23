@@ -152,7 +152,7 @@ function ProjectContent(p: Project) {
       />
 
       {p.description ? (
-        <p className="text-sm leading-relaxed">{p.description[language]}</p>
+        <p className="text-base leading-relaxed">{p.description[language]}</p>
       ) : p.body ? (
         <MdxContent>{p.body[language]}</MdxContent>
       ) : null}

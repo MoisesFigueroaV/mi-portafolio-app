@@ -48,9 +48,9 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
           <h3 className="text-lg sm:text-sm font-bold group-hover:text-white transition-colors text-white/90">
             {project.title[language]}
           </h3>
-          {project.subtitle && <p className="text-base sm:text-xs text-white/60">{project.subtitle[language]}</p>}
+                    {project.subtitle && <p className="text-xs sm:text-sm text-white/60">{project.subtitle[language]}</p>}
           {project.description && (
-            <p className="line-clamp-2 text-xs sm:text-base leading-relaxed text-white/60">{project.description[language]}</p>
+            <p className="line-clamp-2 text-xs sm:text-sm leading-relaxed text-white/60">{project.description[language]}</p>
           )}
 
           <div className="flex flex-wrap gap-2 sm:gap-1.5 pt-3 sm:pt-1">
@@ -82,7 +82,7 @@ export function EnhancedBlogCard({ post, delay = 0 }: { post: Post; delay?: numb
     <button
       onClick={() => openPost(post)}
             className={[
-        "group w-full p-4 sm:p-3 text-left",
+        "group w-full p-4 sm:p-3 text-left font-mono",
         "bg-white/5 transition-all duration-300",
         "hover:-translate-y-1 hover:shadow-lg hover:bg-white/10 hover:shadow-white/10",
         "active:translate-y-0 active:shadow-sm",

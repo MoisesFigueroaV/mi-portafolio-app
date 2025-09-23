@@ -3,8 +3,8 @@ import type { LocalizedString } from "./content-manager";
 // 🎯 CONFIGURACIÓN PERSONAL - Edita aquí tu información
 export const personalInfo = {
   // Información básica
-  name: "Moisés Esteban Figueroa Valenzuela",
-  title: "Analista de Datos y Desarrollador Full-Stack",
+  name: { es: "Moisés Esteban Figueroa Valenzuela", en: "Moisés Esteban Figueroa Valenzuela" },
+  title: { es: "Analista de Datos y Desarrollador Full-Stack", en: "Data Analyst & Full-Stack Developer" },
   description: "Soy Moisés Figueroa, Analista de Datos y Desarrollador Full-Stack de Concepción, Chile. Me motiva explorar cómo la tecnología puede transformar ideas en soluciones prácticas y resolver problemas complejos. Siempre busco aprender nuevas herramientas y aplicarlas en proyectos reales.",
   description_en: "I am Moisés Figueroa, a Data Analyst and Full-Stack Developer from Concepción, Chile. I am motivated by exploring how technology can transform ideas into practical solutions and solve complex problems. I am always looking to learn new tools and apply them in real projects.",
   intro_2: "Disfruto desarrollando aplicaciones web con Astro, Next.js, React y TypeScript, creando interfaces modernas y funcionales. También diseño tooling ligero que mejora mis flujos de trabajo y la experiencia de desarrollo.",

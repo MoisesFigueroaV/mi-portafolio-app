@@ -1,6 +1,16 @@
-"use client"
+'use client'
 import { useLanguage } from "@/components/language-provider"
 import { personalInfo } from "@/lib/page-content"
+
+// Array de los colores y sus valores para mostrarlos
+const colors = [
+  { name: '--background', value: 'oklch(1 0 0)' },
+  { name: '--foreground', value: 'oklch(0.145 0 0)' },
+  { name: '--primary', value: 'oklch(0.205 0 0)' },
+  { name: '--primary-foreground', value: 'oklch(0.985 0 0)' },
+  { name: '--secondary', value: 'oklch(0.97 0 0)' },
+  { name: '--muted', value: 'oklch(0.97 0 0)' },
+];
 
 export default function SiteAside() {
   const { t } = useLanguage()
@@ -65,6 +75,25 @@ export default function SiteAside() {
           </li>
         </ul>
       </section>
+
+      {/* Nueva sección de Paleta de Colores */}
+      <section className="mt-32 opacity-75">
+        <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">Palette</h3>
+        <div className="flex flex-col gap-2 font-mono text-xs">
+          {colors.map((color) => (
+            <div key={color.name} className="flex items-center gap-3">
+              <div
+                className="h-4 w-4 flex-shrink-0 border border-white/20"
+                style={{ backgroundColor: `var(${color.name})` }}
+              />
+              <span>
+                {color.name}: {color.value};
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </div>
   )
 }

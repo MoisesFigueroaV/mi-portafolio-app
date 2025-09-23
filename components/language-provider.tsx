@@ -51,8 +51,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
     for (const placeholder in replacements) {
       const value = replacements[placeholder as keyof typeof replacements]
+      let replacementValue = ''
+
       if (typeof value === "string") {
-        translation = translation.replace(new RegExp(`{${placeholder}}`, "g"), value)
+        replacementValue = value
+      } else if (typeof value === 'object' && value !== null && 'es' in value && 'en' in value) {
+        replacementValue = value[language]
+      }
+
+      if (replacementValue) {
+        translation = translation.replace(new RegExp(`{${placeholder}}`, "g"), replacementValue)
       }
     }
 
