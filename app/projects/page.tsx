@@ -49,7 +49,7 @@ export default function ProjectsPage() {
           />
           <SectionRow label={t("projects")} hint={t("all")} icon={<Code className="h-4 w-4" />}>
             <h1 className="mb-4 sm:mb-6 text-3xl xs:text-4xl md:text-5xl font-bold leading-tight reveal-on-scroll">{t("all_projects")}</h1>
-            <div className="grid gap-6 sm:gap-4 sm:grid-cols-1">
+                        <div className="grid grid-cols-1 gap-4"> {/* Always 1 column, reduced gap */}
               {all.map((p, i) => (
                 <div
                   key={p.title.es}

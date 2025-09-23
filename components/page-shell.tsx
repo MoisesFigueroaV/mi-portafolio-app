@@ -24,7 +24,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Layout principal completamente transparente */}
-      <div className="relative z-10 mx-auto max-w-8xl px-8 pb-24 pt-16 sm:px-4 md:px-12 lg:px-16 xl:px-20 sm:pb-28 sm:pt-16">
+      <div className="relative z-10 mx-auto max-w-8xl px-4 pb-24 pt-16 sm:px-4 md:px-12 lg:px-16 xl:px-20 sm:pb-28 sm:pt-16">
         <div className="grid grid-cols-12 gap-x-8 gap-y-8 sm:gap-x-8 sm:gap-y-10 lg:gap-x-16">
           {/* Aside - solo visible en desktop */}
           <aside className="relative col-span-3 hidden lg:block">

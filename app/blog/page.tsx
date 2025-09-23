@@ -37,7 +37,7 @@ export default function BlogPage() {
               onClick={() => router.back()}
               className="inline-flex items-center gap-2 px-4 py-3 text-sm text-white border border-white/30 hover:bg-white/10 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-colors"
             >
-              <ArrowLeft className="h-5 w-5" />
+                            <ArrowLeft className="h-5 w-5" />
               <span>{t("back")}</span>
             </button>
           </div>
@@ -53,7 +53,7 @@ export default function BlogPage() {
             icon={<BookOpen className="h-4 w-4" />}
           >
             <h1 className="mb-4 sm:mb-6 text-3xl xs:text-4xl md:text-5xl font-bold leading-tight reveal-on-scroll">{t("blog")}</h1>
-            <div className="grid gap-6 sm:gap-4 sm:grid-cols-1">
+            <div className="grid gap-6 sm:gap-3 md:grid-cols-2 lg:grid-cols-2"> {/* Changed here */}
               {all.map((p, i) => (
                 <div
                   key={p.title.es}

@@ -151,10 +151,10 @@ function ProjectContent(p: Project) {
         sizes="(max-width: 768px) 90vw, 800px"
       />
 
-      {p.body ? (
-        <MdxContent>{p.body[language]}</MdxContent>
-      ) : p.description ? (
+      {p.description ? (
         <p className="text-sm leading-relaxed">{p.description[language]}</p>
+      ) : p.body ? (
+        <MdxContent>{p.body[language]}</MdxContent>
       ) : null}
 
       {p.tags && p.tags.length > 0 && (

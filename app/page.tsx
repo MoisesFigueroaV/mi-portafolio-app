@@ -91,7 +91,7 @@ export default function Page() {
             spacing="xl"
             icon={<Code className="h-5 w-5 sm:h-4 sm:w-4" />}
           >
-                                    <div className="grid gap-6 sm:gap-4 sm:grid-cols-1 lg:grid-cols-2">
+                                    <div className="grid grid-cols-1 gap-4"> {/* Always 1 column, reduced gap */}
               {featuredProjects.map((p, i) => (
                 <div key={p.title.es} className="reveal-on-scroll" style={{ animationDelay: `${i * 150}ms` }}>
                   <EnhancedProjectCard project={p} delay={0} />

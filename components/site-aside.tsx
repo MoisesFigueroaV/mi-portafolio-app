@@ -22,9 +22,9 @@ export default function SiteAside() {
           <li>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="underline transition-colors hover:text-white/80"
+              className="underline transition-colors hover:text-white/80 break-words"
             >
-              <span className="underline break-all">{personalInfo.email}</span>
+              <span className="underline">{personalInfo.email}</span>
             </a>
           </li>
         </ul>

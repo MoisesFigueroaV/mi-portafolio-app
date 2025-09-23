@@ -3,17 +3,23 @@ import type { Project } from "./content-manager"
 // 🎯 PROYECTOS - Agrega/edita aquí tus proyectos
 export const projects: Project[] = [
   {
-    title: { es: "Specular UI", en: "Specular UI" },
+    title: { es: "Mi portafolio personal", en: "My Personal Portfolio" },
     subtitle: { es: "Componentes accesibles y rápidos", en: "Accessible and fast components" },
-    description: { es: "Librería de componentes centrada en accesibilidad y rendimiento.", en: "Component library focused on accessibility and performance." },
-    image: "/specular-ui-preview.png", // 📁 Sube tu imagen a public/
+description: { 
+  es: `Un proyecto personal para centralizar y mostrar mi trabajo y habilidades en el desarrollo de software. El objetivo era crear una
+  plataforma moderna, rápida y accesible donde pudiera documentar mi trayectoria profesional, proyectos destacados y experimentos
+  técnicos. Este mismo sitio web es el resultado de ese esfuerzo, sirviendo como una carta de presentación interactiva y un espacio
+  para compartir conocimientos a través de artículos de blog.`,
+  en: `A personal project to centralize and showcase my work and skills in software development. The goal was to create a
+  modern, fast, and accessible platform where I could document my professional career, notable projects, and technical experiments. This website is the result of that effort, serving as an interactive cover letter and a space to share knowledge through blog articles.`
+},
+    image: "/projects/portfolio.jpeg", 
     width: 1200,
     height: 675,
-    siteUrl: "https://specular-ui.com", // 🔗 Cambia por tu URL
-    repoUrl: "https://github.com/tu-usuario/specular-ui", // 🔗 Cambia por tu repo
-    tags: ["React", "Tailwind", "A11y"],
+    repoUrl: "https://github.com/MoisesFigueroaV/mi-portafolio-app", 
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Framer Motion", "Vercel"],
     updatedAt: "2025-01-15",
-    featured: true, // ⭐ Aparece en homepage
+    featured: true, 
     body: {
       es: "Contenido del proyecto.",
       en: "Project content."
@@ -34,34 +40,5 @@ export const projects: Project[] = [
   //   updatedAt: "2024-01-15", // Fecha actual
   //   featured: true, // true = aparece en homepage
   // },
-
-  {
-    title: { es: "Vector Notes", en: "Vector Notes" },
-    subtitle: { es: "Notas con CRDT local-first", en: "Notes with local-first CRDT" },
-    description: { es: "Editor de notas resistente a conflictos, offline-first.", en: "Conflict-resistant, offline-first notes editor." },
-    image: "/vector-notes-local-first-app.png",
-    width: 1200,
-    height: 675,
-    siteUrl: "https://vector-notes.app",
-    repoUrl: "https://github.com/tu-usuario/vector-notes",
-    tags: ["Tauri", "CRDT", "Rust"],
-    updatedAt: "2024-12-20",
-    featured: true,
-  },
-
-  {
-    title: { es: "Monochrome Blog", en: "Monochrome Blog" },
-    subtitle: { es: "Blog ultrarrápido con MDX", en: "Ultrafast blog with MDX" },
-    description: { es: "Contenido en MDX con métricas, OG automático y diseño monocromo.", en: "MDX content with metrics, automatic OG, and monochrome design." },
-    image: "/monochrome-blog-mdx.png",
-    width: 1200,
-    height: 675,
-    siteUrl: "https://monochrome-blog.com",
-    repoUrl: "https://github.com/tu-usuario/monochrome-blog",
-    tags: ["MDX", "Next.js", "SEO"],
-    updatedAt: "2024-11-18",
-    featured: true,
-  },
-
 
 ]

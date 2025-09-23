@@ -50,7 +50,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
           </h3>
           {project.subtitle && <p className="text-base sm:text-xs text-white/60">{project.subtitle[language]}</p>}
           {project.description && (
-            <p className="line-clamp-2 text-base sm:text-xs leading-relaxed text-white/60">{project.description[language]}</p>
+            <p className="line-clamp-2 text-xs sm:text-base leading-relaxed text-white/60">{project.description[language]}</p>
           )}
 
           <div className="flex flex-wrap gap-2 sm:gap-1.5 pt-3 sm:pt-1">
