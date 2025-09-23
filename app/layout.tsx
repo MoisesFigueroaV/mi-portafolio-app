@@ -8,8 +8,8 @@ import { personalInfo } from "@/lib/page-content"
 export const metadata: Metadata = {
   metadataBase: new URL(personalInfo.website),
   title: {
-    default: `${personalInfo.name} - ${personalInfo.title}`,
-    template: `%s | ${personalInfo.name}`,
+    default: `${personalInfo.name.es} - ${personalInfo.title.es}`,
+    template: `%s | ${personalInfo.name.es}`,
   },
   description: personalInfo.description,
   icons: [{ rel: 'icon', url: '/image-mesh-grandient.png' }],
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    title: `${personalInfo.name} - ${personalInfo.title}`,
+    title: `${personalInfo.name.es} - ${personalInfo.title.es}`,
     description: personalInfo.description,
-    siteName: personalInfo.name,
+    siteName: personalInfo.name.es,
     images: [
       {
         url: personalInfo.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: `${personalInfo.name} - Portfolio`,
+        alt: `${personalInfo.name.es} - Portfolio`,
       },
     ],
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   // Twitter Cards
   twitter: {
     card: "summary_large_image",
-    title: `${personalInfo.name} - ${personalInfo.title}`,
+    title: `${personalInfo.name.es} - ${personalInfo.title.es}`,
     description: personalInfo.description,
     creator: personalInfo.seo.twitterHandle,
     images: [personalInfo.seo.ogImage],
@@ -83,8 +83,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: personalInfo.name,
-              jobTitle: personalInfo.title,
+              name: personalInfo.name.es,
+              jobTitle: personalInfo.title.es,
               description: personalInfo.description,
               url: personalInfo.website,
               email: personalInfo.email,

@@ -16,7 +16,6 @@ import Timeline from "@/components/timeline";
 import MobileInfo from "@/components/mobile-info";
 import { personalInfo, techStackItems } from "@/lib/page-content";
 import { useLanguage } from "@/components/language-provider";
-import LanguageToggleWrapper from "@/components/language-toggle-wrapper"; // Added import
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Globe } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion" // Added motion and AnimatePresence import
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider"
 
 export default function LanguageToggle() {
