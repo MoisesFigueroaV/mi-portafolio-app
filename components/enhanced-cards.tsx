@@ -63,7 +63,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
               </span>
             ))}
             {project.tags && project.tags.length > 3 && (
-              <span className="px-3 py-1.5 sm:px-2 sm:py-1 text-base sm:text-xs text-white/60">
+              <span className="px-3 py-1.5 sm:px-2 sm:py-0.5 text-sm sm:text-[10px] text-white/60">
                 +{project.tags.length - 3}
               </span>
             )}
