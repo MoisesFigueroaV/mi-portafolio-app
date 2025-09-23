@@ -174,41 +174,27 @@ export default function Page() {
 
           {/* CONTACTO */}
           <SectionRow id="contact" label={t("contact")} hint={t("lets_work_together")} spacing="xl">
-            <div className="space-y-6 reveal-on-scroll">
-              <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-start sm:items-center gap-6 sm:gap-3 lg:gap-4">
-                <span
-                  className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white"
-                >
-                  <Mail className="h-6 w-6 sm:h-4 sm:w-4" />
-                  <span>{personalInfo.email}</span>
-                </span>
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noreferrer"
-                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
-                >
-                  <Github className="h-6 w-6 sm:h-4 sm:w-4" />
-                  <span className="hidden sm:inline">{t("github_handle")}</span>
-                  <span className="sm:hidden">GitHub</span>
+            <div className="reveal-on-scroll">
+              <div className="grid grid-cols-2 gap-4">
+                {/* Email */}
+                <a href={`mailto:${personalInfo.email}`} className="col-span-2 flex items-center gap-3 bg-white/5 p-4 text-sm font-medium text-white/90 transition-colors hover:bg-white/10">
+                  <Mail className="h-5 w-5 flex-shrink-0" />
+                  <span className="truncate">{personalInfo.email}</span>
                 </a>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                                    className="inline-flex items-center gap-3 sm:gap-2 bg-white/5 px-5 py-4 text-base sm:px-3 sm:py-2 sm:text-xs text-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
-                >
-                  <Linkedin className="h-6 w-6 sm:h-4 sm:w-4" />
-                  <span className="hidden sm:inline">LinkedIn</span>
-                  <span className="sm:hidden">LinkedIn</span>
+                {/* GitHub */}
+                <a href={personalInfo.github} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-white/5 p-4 text-center text-sm font-medium text-white/90 transition-colors hover:bg-white/10">
+                  <Github className="h-5 w-5" />
+                  <span>GitHub</span>
                 </a>
-                <a
-                  href="/cv/CV_MoisesFigueroa.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                                    className="inline-flex items-center gap-2 sm:gap-1 bg-white px-5 py-4 text-lg sm:px-3 sm:py-2 sm:text-sm text-black hover:bg-white/90 hover:-translate-y-0.5 hover:shadow-lg active:bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 transition-all duration-300"
-                >
-                  {t("cv")} <ExternalLink className="h-5 w-5 sm:h-3.5 sm:w-3.5" />
+                {/* LinkedIn */}
+                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-white/5 p-4 text-center text-sm font-medium text-white/90 transition-colors hover:bg-white/10">
+                  <Linkedin className="h-5 w-5" />
+                  <span>LinkedIn</span>
+                </a>
+                {/* CV */}
+                <a href="/cv/CV_MoisesFigueroa.pdf" target="_blank" rel="noreferrer" className="col-span-2 flex items-center justify-center gap-3 bg-white p-4 text-center text-sm font-bold text-black transition-colors hover:bg-white/90">
+                  <span>{t("cv")}</span>
+                  <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
             </div>

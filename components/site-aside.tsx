@@ -6,7 +6,7 @@ export default function SiteAside() {
   const { t } = useLanguage()
 
   return (
-    <div className="sticky top-24 pr-8 space-y-8 text-sm leading-relaxed text-white/60">
+    <div className="sticky top-24 space-y-8 text-sm leading-relaxed text-white/60">
       <section>
         <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{t("address")}</h3>
         <p className="whitespace-pre-line leading-relaxed">

@@ -41,7 +41,7 @@ export default function LanguageToggle() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.2 }}
-        className="text-base font-mono font-bold sm:text-xs"
+        className="text-xs font-mono font-bold sm:text-base"
       >
         {language.toUpperCase()}
       </motion.span>
