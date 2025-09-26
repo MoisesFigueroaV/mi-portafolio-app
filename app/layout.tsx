@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s | ${personalInfo.name.es}`,
   },
   description: personalInfo.description,
-  icons: [{ rel: 'icon', url: '/image-mesh-grandient.png' }],
+  icons: [{ rel: 'icon', url: '/image-mesh-gradient.png' }],
   keywords: personalInfo.seo.keywords,
   authors: [{ name: personalInfo.seo.author }],
   creator: personalInfo.seo.author,
