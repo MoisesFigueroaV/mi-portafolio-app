@@ -15,10 +15,9 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
     <button
       onClick={() => openProject(project)}
       className={[
-        "group w-full overflow-hidden text-left",
-        "bg-white/5 transition-all duration-300",
-        "hover:-translate-y-2 hover:shadow-xl hover:bg-white/10 hover:shadow-white/10",
-        "active:translate-y-0 active:shadow-md",
+        "group w-full overflow-hidden text-left font-mono",
+        "border border-white/20 bg-white/5 transition-all duration-300",
+        "hover:-translate-y-1 hover:bg-white/10 hover:border-white/30",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
         "flex flex-col sm:flex-row items-stretch", // Contenedor Flex
       ].join(" ")}
@@ -83,9 +82,8 @@ export function EnhancedBlogCard({ post, delay = 0 }: { post: Post; delay?: numb
       onClick={() => openPost(post)}
             className={[
         "group w-full p-4 sm:p-3 text-left font-mono",
-        "bg-white/5 transition-all duration-300",
-        "hover:-translate-y-1 hover:shadow-lg hover:bg-white/10 hover:shadow-white/10",
-        "active:translate-y-0 active:shadow-sm",
+        "border border-white/20 bg-white/5 transition-all duration-300",
+        "hover:-translate-y-1 hover:bg-white/10 hover:border-white/30",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
         "flex items-center", // Contenedor Flex
       ].join(" ")}

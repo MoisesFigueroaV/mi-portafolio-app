@@ -25,7 +25,7 @@ export default function TechStack({
       {items.map((it, index) => (
         <div
           key={it.name.es}
-          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 flex flex-col h-full"
+          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 flex flex-col h-full font-mono"
           style={{ animationDelay: `${index * 150}ms` }}
         >
           <div>

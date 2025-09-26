@@ -10,7 +10,7 @@ export default function Timeline() {
   return (
     <div className="space-y-8" role="list" aria-label={t("experience")}>
       {timelineData.map((item, i) => (
-        <div key={i} className="relative flex gap-6 reveal-on-scroll" style={{ animationDelay: `${i * 200}ms` }} role="listitem">
+        <div key={i} className="relative flex gap-6 reveal-on-scroll p-4 sm:p-3 border border-white/20 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 font-mono" style={{ animationDelay: `${i * 200}ms` }} role="listitem">
           {/* Timeline line con puntos */}
           <div className="flex flex-col items-center pt-1.5">
             <div className={`w-2 h-2 rounded-full ${item.current ? "bg-white" : "bg-white/40"}`} />
