@@ -6,8 +6,11 @@ import SiteAside from "@/components/site-aside"
 import SmoothScroll from "@/components/smooth-scroll"
 import ScrollReveal from "@/components/scroll-reveal"
 import Plasma from "@/components/plasma"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function PageShell({ children }: { children: React.ReactNode }) {
+  const isMobile = useIsMobile()
+
   return (
     <>
       <SmoothScroll />
@@ -15,7 +18,14 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
 
       {/* Fondo animado fijo con color más claro y visible */}
       <div className="fixed inset-0 z-0 h-full w-full">
-        <Plasma color="#3a3a5e" speed={0.3} direction="forward" scale={1.1} opacity={0.5} mouseInteractive={true} />
+        <Plasma
+          color="#3a3a5e"
+          speed={isMobile ? 0.1 : 0.3}
+          direction="forward"
+          scale={1.1}
+          opacity={0.5}
+          mouseInteractive={!isMobile}
+        />
       </div>
 
       {/* Botón de idioma fijo */}

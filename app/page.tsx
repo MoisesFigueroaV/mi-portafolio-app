@@ -79,8 +79,18 @@ export default function Page() {
             </p>
           </div>
 
-          {/* INFO MÓVIL - Solo visible en móvil */}
-          <MobileInfo />
+          {/* EXPERIENCIA - Timeline */}
+          <SectionRow
+            id="experience"
+            label={t("experience")}
+            hint={t("trajectory")}
+            spacing="xl"
+            icon={<User className="h-5 w-5 sm:h-4 sm:w-4" />}
+          >
+            <div className="reveal-on-scroll">
+              <Timeline />
+            </div>
+          </SectionRow>
 
           {/* PROYECTOS */}
           <SectionRow
@@ -152,19 +162,6 @@ export default function Page() {
               </Link>
             </div>
           </SectionRow> */}
-
-          {/* EXPERIENCIA - Timeline */}
-          <SectionRow
-            id="experience"
-            label={t("experience")}
-            hint={t("trajectory")}
-            spacing="xl"
-            icon={<User className="h-5 w-5 sm:h-4 sm:w-4" />}
-          >
-            <div className="reveal-on-scroll">
-              <Timeline />
-            </div>
-          </SectionRow>
 
           {/* STACK TECNOLÓGICO */}
           <SectionRow id="stack" label={t("stack")} hint={t("technologies_used")} spacing="xl">
