@@ -25,15 +25,17 @@ export default function TechStack({
       {items.map((it, index) => (
         <div
           key={it.name.es}
-          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1"
+          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 flex flex-col h-full"
           style={{ animationDelay: `${index * 150}ms` }}
         >
-          <div className="mb-3 sm:mb-1 flex items-center gap-2">
-            <BadgeCheck className="h-6 w-6 sm:h-4 sm:w-4 text-white" />
-            <h3 className="text-lg sm:text-sm font-bold">{it.name[language]}</h3>
+          <div>
+            <div className="mb-3 sm:mb-1 flex items-start gap-2">
+              <BadgeCheck className="h-5 w-5 text-white" />
+              <h3 className="text-lg sm:text-sm font-bold">{it.name[language]}</h3>
+            </div>
+            <p className="text-base sm:text-xs text-white/70 leading-relaxed">{it.description[language]}</p>
           </div>
-          <p className="text-base sm:text-xs text-white/70 leading-relaxed">{it.description[language]}</p>
-          <div className="mt-4 sm:mt-2 flex flex-wrap gap-2">
+          <div className="mt-auto pt-4 sm:pt-2 flex flex-wrap gap-2">
             {it.tags?.map((t) => (
               <span
                 key={t}

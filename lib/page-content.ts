@@ -49,67 +49,49 @@ export type TechStackItem = {
 
 export const techStackItems: TechStackItem[] = [
   {
-    name: { es: "Next.js", en: "Next.js" },
-    description: { 
-      es: "Framework de React para construir aplicaciones web full-stack con App Router y Server Actions.", 
-      en: "React framework to build full-stack web apps with App Router and Server Actions." 
+    name: { es: "Next.js + React + TypeScript", en: "Next.js + React + TypeScript" },
+    description: {
+      es: "Construcción de aplicaciones web full-stack con interfaces modernas, tipado estricto y patrones reutilizables.",
+      en: "Building full-stack web applications with modern interfaces, strict typing, and reusable patterns."
     },
-    tags: ["Full-stack", "App Router", "RSC"],
+    tags: ["Full-stack", "UI", "App Router", "TypeScript"],
     role: "frontend",
-  },
-  {
-    name: { es: "React + TypeScript", en: "React + TypeScript" },
-    description: { 
-      es: "Biblioteca para construir interfaces modernas con tipado estricto y patrones reutilizables.", 
-      en: "Library for building modern interfaces with strict typing and reusable patterns." 
-    },
-    tags: ["UI", "Patterns", "A11y"],
-    role: "frontend",
-  },
-  {
-    name: { es: "Tailwind CSS", en: "Tailwind CSS" },
-    description: { 
-      es: "Framework de utilidades CSS para crear sistemas de diseño rápidos, consistentes y escalables.", 
-      en: "Utility-first CSS framework to create fast, consistent and scalable design systems." 
-    },
-    tags: ["Design System", "Tokens", "Variants"],
-    role: "tools",
   },
   {
     name: { es: "Bun + Elysia.js", en: "Bun + Elysia.js" },
-    description: { 
-      es: "Entorno y framework ligero para construir APIs rápidas, seguras y tipadas con TypeScript.", 
-      en: "Runtime and lightweight framework to build fast, secure, and typed APIs with TypeScript." 
+    description: {
+      es: "Entorno y framework ligero para construir APIs rápidas, seguras y tipadas con TypeScript.",
+      en: "Runtime and lightweight framework to build fast, secure, and typed APIs with TypeScript."
     },
     tags: ["Backend", "APIs", "TypeScript"],
     role: "backend",
   },
   {
-    name: { es: "PostgreSQL + Drizzle ORM", en: "PostgreSQL + Drizzle ORM" },
-    description: { 
-      es: "Base de datos relacional con modelado de esquemas tipados y consultas optimizadas.", 
-      en: "Relational database with typed schema modeling and optimized queries." 
+    name: { es: "Supabase + PostgreSQL", en: "Supabase + PostgreSQL" },
+    description: {
+      es: "Plataforma backend con base de datos relacional para autenticación, APIs en tiempo real y almacenamiento.",
+      en: "Backend platform with a relational database for authentication, real-time APIs, and storage."
     },
-    tags: ["SQL", "Schemas", "ORM"],
+    tags: ["Auth", "Realtime", "Storage", "SQL"],
     role: "database",
   },
-  {
-    name: { es: "Supabase", en: "Supabase" },
-    description: { 
-      es: "Plataforma backend para autenticación, APIs en tiempo real y almacenamiento escalable.", 
-      en: "Backend platform for authentication, real-time APIs, and scalable storage." 
-    },
-    tags: ["Auth", "Realtime", "Storage"],
-    role: "backend",
-  },
-  {
+    {
     name: { es: "Power BI + Python", en: "Power BI + Python" },
-    description: { 
-      es: "Herramientas para procesos ETL, análisis de datos y dashboards interactivos.", 
-      en: "Tools for ETL processes, data analysis, and interactive dashboards." 
+    description: {
+      es: "Herramientas para procesos ETL, análisis de datos y dashboards interactivos.",
+      en: "Tools for ETL processes, data analysis, and interactive dashboards."
     },
     tags: ["ETL", "Analytics", "Dashboards"],
     role: "data",
+  },
+  {
+    name: { es: "Tailwind CSS", en: "Tailwind CSS" },
+    description: {
+      es: "Framework de utilidades CSS para crear sistemas de diseño rápidos, consistentes y escalables.",
+      en: "Utility-first CSS framework to create fast, consistent and scalable design systems."
+    },
+    tags: ["Design System", "Tokens", "Variants"],
+    role: "tools",
   },
 ]
 

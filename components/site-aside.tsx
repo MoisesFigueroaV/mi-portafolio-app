@@ -77,7 +77,7 @@ export default function SiteAside() {
       </section>
 
       {/* Nueva sección de Paleta de Colores */}
-      <section className="mt-32 opacity-75">
+      <section className="mt-40 opacity-75">
         <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">Palette</h3>
         <div className="flex flex-col gap-2 font-mono text-xs">
           {colors.map((color) => (
