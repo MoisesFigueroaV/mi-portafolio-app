@@ -31,11 +31,9 @@ export default function MdxContent({ children }: { children: string }) {
           .prose p {
             font-size: 1.125rem; /* text-lg (18px) for mobile paragraphs to match main page */
             line-height: 1.75; /* leading-relaxed */
-            text-align: justify; /* Default for paragraphs */
           }
         }
         .prose p {
-          text-align: justify;
           margin-top: 0.75em; /* Reduced */
           margin-bottom: 0.75em; /* Reduced */
           font-size: 1.125rem; /* text-lg (18px) for larger screens */
