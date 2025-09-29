@@ -13,7 +13,7 @@ const colors = [
 ];
 
 export default function SiteAside() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <div className="sticky top-24 space-y-8 text-sm leading-relaxed text-white/60">
@@ -48,7 +48,7 @@ export default function SiteAside() {
               href={personalInfo.github} 
               target="_blank" 
               rel="noreferrer" 
-              className="underline transition-colors hover:text-white/80"
+              className="underline text-white/60 transition-colors hover:text-white/80"
             >
               {t("github_link")}
             </a>
@@ -58,7 +58,7 @@ export default function SiteAside() {
               href={personalInfo.twitter} 
               target="_blank" 
               rel="noreferrer" 
-              className="underline transition-colors hover:text-white/80"
+              className="underline text-white/60 transition-colors hover:text-white/80"
             >
               <span className="underline">{t("twitter_link")}</span>
             </a>
@@ -68,7 +68,7 @@ export default function SiteAside() {
               href={personalInfo.linkedin} 
               target="_blank" 
               rel="noreferrer" 
-              className="underline transition-colors hover:text-white/80"
+              className="underline text-white/60 transition-colors hover:text-white/80"
             >
               {t("linkedin_link")}
             </a>
@@ -78,7 +78,7 @@ export default function SiteAside() {
 
       {/* Nueva sección de Paleta de Colores */}
       <section className="mt-40 opacity-75">
-        <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">Palette</h3>
+        <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{language === "es" ? "Paleta" : "Palette"}</h3>
         <div className="flex flex-col gap-2 font-mono text-xs">
           {colors.map((color) => (
             <div key={color.name} className="flex items-center gap-3">

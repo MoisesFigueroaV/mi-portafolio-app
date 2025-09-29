@@ -24,7 +24,7 @@ export const personalInfo = {
     city: "Concepción",
     country: "Chile",
     timezone: "America/Chile_Santiago", // Consulta https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    workMode: "Remoto / Híbrido",
+    workMode: "Remoto / Presencial",
   },
 
   // Archivos
