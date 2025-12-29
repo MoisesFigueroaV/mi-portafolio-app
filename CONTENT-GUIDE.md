@@ -2,7 +2,7 @@
 
 ## 🎯 Información Personal
 
-Edita `lib/page-content.ts` en el objeto `personalInfo` para cambiar:
+Edita `src/lib/page-content.ts` en el objeto `personalInfo` para cambiar:
 - ✅ Nombre, título, descripción
 - ✅ Email, GitHub, Twitter, LinkedIn
 - ✅ Ubicación y modo de trabajo
@@ -10,15 +10,15 @@ Edita `lib/page-content.ts` en el objeto `personalInfo` para cambiar:
 
 ## 🚀 Agregar Proyectos
 
-1. **Sube la imagen** a `public/images/nombre-proyecto.png`
-2. **Edita** `lib/projects-data.ts` en la sección `projects`
+1. **Sube la imagen** a `public/projects/nombre-proyecto.png` (o jpeg)
+2. **Edita** `src/lib/projects-data.ts` en la sección `projects`
 3. **Copia** un proyecto existente y modifica. Recuerda añadir la traducción en inglés:
    ```typescript
    {
      title: { es: "Mi Nuevo Proyecto", en: "My New Project" },
      subtitle: { es: "Descripción corta", en: "Short description" },
      description: { es: "Descripción detallada...", en: "Detailed description..." },
-     image: "/images/mi-proyecto.png", // Tu imagen
+     image: "/projects/mi-proyecto.png", // Tu imagen en public/projects
      siteUrl: "https://mi-sitio.com", // URL del proyecto
      repoUrl: "https://github.com/usuario/repo", // GitHub
      tags: ["React", "TypeScript"], // Tecnologías
@@ -29,7 +29,7 @@ Edita `lib/page-content.ts` en el objeto `personalInfo` para cambiar:
 
 ## 📝 Agregar Blog Posts
 
-1. **Edita** `lib/blog-data.ts` en la sección `posts`
+1. **Edita** `src/lib/blog-data.ts` en la sección `posts`
 2. **Copia** un post existente y modifica. Recuerda añadir la traducción en inglés:
    ```typescript
    {
@@ -53,19 +53,19 @@ Edita `lib/page-content.ts` en el objeto `personalInfo` para cambiar:
 ## 📸 Agregar Fotos
 
 1. **Sube la imagen** a `public/photos/mi-foto.jpg`
-2. **Edita** `lib/images-data.ts` en la sección `photos`:
+2. **Edita** `src/lib/images-data.ts` en la sección `photos`:
    ```typescript
    { src: "/photos/mi-foto.jpg", alt: "Descripción de la foto" }
    ```
 
 ## 🔗 Cambiar Enlaces
 
-Todos los enlaces se actualizan automáticamente desde `lib/page-content.ts` en el objeto `personalInfo`.
+Todos los enlaces se actualizan automáticamente desde `src/lib/page-content.ts` en el objeto `personalInfo`.
 
 ## 🎨 Personalizar Tema
 
-La configuración del tema ya no se gestiona en `lib/config.ts`. Los estilos se pueden modificar directamente en los archivos de componentes y en `app/globals.css`.
+Los estilos globales están en `src/styles/globals.css`. La configuración de Tailwind está en `tailwind.config.mjs`.
 
 ## 📊 SEO
 
-El SEO se configura automáticamente desde `lib/page-content.ts` en el objeto `personalInfo.seo`.
+El SEO se configura automáticamente desde `src/lib/page-content.ts` en el objeto `personalInfo.seo`.

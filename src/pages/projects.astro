@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectsApp from '../components/ProjectsApp';
+import { personalInfo } from "@/lib/page-content";
+
+const title = `${personalInfo.name.es} - Proyectos`;
+---
+
+<Layout title={title}>
+	<ProjectsApp client:load />
+</Layout>

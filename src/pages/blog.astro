@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogApp from '../components/BlogApp';
+import { personalInfo } from "@/lib/page-content";
+
+const title = `${personalInfo.name.es} - Blog`;
+---
+
+<Layout title={title}>
+	<BlogApp client:load />
+</Layout>

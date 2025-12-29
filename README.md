@@ -1,65 +1,51 @@
-# Portafolio Personal con Next.js
+# Portafolio Personal (Versión Astro)
 
-Este es un portafolio personal construido con Next.js, TypeScript y Tailwind CSS. Está diseñado para ser fácilmente personalizable y extensible.
+Este es un portafolio personal migrado a **Astro**, manteniendo la interactividad de React (Framer Motion, Radix UI) y el diseño original con Tailwind CSS.
 
 ## Características
 
-- **Multi-idioma**: Soporte para español e inglés en la interfaz y el contenido.
-- **Gestión de contenido centralizada**: Toda la información personal, proyectos, posts del blog, etc., se gestionan desde archivos en el directorio `lib`.
-- **Diseño responsive**: Adaptado para verse bien en dispositivos de escritorio y móviles.
-- **Componentes reutilizables**: Construido con componentes de React reutilizables y bien estructurados.
-- **SEO optimizado**: Configuración de metadatos para un buen posicionamiento en buscadores.
-- **Modo oscuro**: Interfaz con tema oscuro por defecto.
+- **Rendimiento Mejorado**: Arquitectura basada en islas de Astro para menor JS inicial.
+- **Multi-idioma**: Soporte para español e inglés (Mantenido vía React Context).
+- **Gestión de contenido centralizada**: Toda la información se gestiona desde `src/lib`.
+- **Diseño responsive**: Adaptado para móviles y escritorio.
+- **Animaciones**: Framer Motion para transiciones suaves.
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/) - El framework de React para producción.
-- [TypeScript](https://www.typescriptlang.org/) - Para un código más robusto y mantenible.
-- [Tailwind CSS](https://tailwindcss.com/) - Para un diseño rápido y personalizable.
-- [Framer Motion](https://www.framer.com/motion/) - Para animaciones fluidas.
-- [Lucide React](https://lucide.dev/) - Para los iconos.
+- [Astro](https://astro.build/) - Framework web para contenido.
+- [React](https://react.dev/) - Biblioteca UI para componentes interactivos.
+- [Tailwind CSS](https://tailwindcss.com/) - Estilos utilitarios.
+- [Framer Motion](https://www.framer.com/motion/) - Animaciones.
 
 ## Primeros Pasos
 
-Para empezar a trabajar con el proyecto, sigue estos pasos:
-
-1. **Clona el repositorio**:
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   ```
-
-2. **Instala las dependencias**:
+1. **Instala las dependencias**:
    ```bash
    npm install
    ```
 
-3. **Inicia el servidor de desarrollo**:
+2. **Inicia el servidor de desarrollo**:
    ```bash
    npm run dev
    ```
 
-   Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
+   Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
 
 ## Gestión de Contenido
 
-Para personalizar el contenido de tu portafolio, edita los archivos en el directorio `lib`:
+El contenido se gestiona en `src/lib`:
 
-- **Información Personal**: Edita el objeto `personalInfo` en `lib/page-content.ts` para cambiar tu nombre, título, descripción, enlaces a redes sociales, etc.
+- **Información Personal**: `src/lib/page-content.ts`
+- **Proyectos**: `src/lib/projects-data.ts`
+- **Blog**: `src/lib/blog-data.ts`
+- **Traducciones**: `src/lib/translations.ts`
 
-- **Proyectos**: Para agregar o editar proyectos, modifica el array `projects` en `lib/projects-data.ts`. Recuerda seguir la estructura de datos y proporcionar los textos en español e inglés.
-
-- **Posts del Blog**: Para agregar o editar posts, modifica el array `posts` en `lib/blog-data.ts`.
-
-- **Stack Tecnológico**: Edita el array `techStackItems` en `lib/page-content.ts`.
-
-- **Experiencia**: Edita el array `timelineData` en `lib/page-content.ts`.
-
-- **Traducciones de la Interfaz**: Para cambiar los textos de la interfaz (botones, títulos, etc.), edita el objeto `translations` en `lib/translations.ts`.
-
-Para más detalles, consulta el archivo `CONTENT-GUIDE.md`.
+Para más detalles, consulta `CONTENT-GUIDE.md`.
 
 ## Despliegue
 
-La forma más fácil de desplegar tu aplicación Next.js es usar la [plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) de los creadores de Next.js.
+Puedes desplegar este proyecto en Vercel, Netlify o cualquier host estático adaptando el adaptador de Astro si es necesario (actualmente estático por defecto).
 
-Consulta la [documentación de despliegue de Next.js](https://nextjs.org/docs/deployment) para más información.
+```bash
+npm run build
+```

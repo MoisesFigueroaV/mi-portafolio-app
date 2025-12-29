@@ -34,14 +34,14 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
     setState({ type: "project", data: p })
     try {
       history.pushState({ viewer: true }, "", "#view")
-    } catch {}
+    } catch { }
   }, [])
 
   const openPost = useCallback((p: Post) => {
     setState({ type: "post", data: p })
     try {
       history.pushState({ viewer: true }, "", "#view")
-    } catch {}
+    } catch { }
   }, [])
 
   const close = useCallback(() => {
@@ -85,7 +85,7 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-52 bg-black text-white"
+            className="fixed inset-0 z-[60] bg-black text-white"
             aria-modal="true"
             role="dialog"
           >
@@ -130,7 +130,7 @@ export function ViewerProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
-import Image from "next/image"
+
 
 function ProjectContent(p: Project) {
   const { t, language } = useLanguage()
@@ -139,16 +139,15 @@ function ProjectContent(p: Project) {
     <article>
       <header className="mb-4">
         <h2 className="text-xl sm:text-2xl font-bold leading-tight">{p.title[language]}</h2>
-                {/* Subtitle removed as per user request */}
+        {/* Subtitle removed as per user request */}
       </header>
 
-      <Image
+      <img
         src={p.image || "/placeholder.svg"}
         alt={`Vista de ${p.title[language]}`}
         width={p.width}
         height={p.height}
         className="mb-4 sm:mb-5 w-full border border-white/20"
-        sizes="(max-width: 768px) 90vw, 800px"
       />
 
       {p.description ? (

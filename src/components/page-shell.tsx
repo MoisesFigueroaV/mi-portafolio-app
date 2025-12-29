@@ -29,7 +29,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Botón de idioma fijo */}
-      <div className="fixed right-4 top-4 z-51 flex items-center gap-2 sm:right-4 sm:top-4">
+      <div className="fixed right-4 top-4 z-[51] flex items-center gap-2 sm:right-4 sm:top-4">
         <LanguageToggle />
       </div>
 

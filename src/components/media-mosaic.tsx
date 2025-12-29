@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
+
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { X } from "lucide-react"
 import type { Photo } from "@/lib/content-manager"
@@ -23,7 +23,7 @@ export default function MediaMosaic({ photos = [] as Photo[] }: { photos?: Photo
     <>
       <div className="columns-1 gap-3 sm:gap-2 md:gap-3 sm:columns-2 md:columns-3">
         {photos.map((p, i) => (
-          <Image
+          <img
             key={p.src + i}
             src={p.src || "/placeholder.svg"}
             alt={p.alt}
@@ -32,7 +32,6 @@ export default function MediaMosaic({ photos = [] as Photo[] }: { photos?: Photo
             className="mb-3 sm:mb-2 md:mb-3 inline-block w-full cursor-zoom-in sm:cursor-zoom-in break-inside-avoid border border-white/20 transition-all hover:opacity-90 active:opacity-95 reveal-on-scroll"
             onClick={() => openPhoto(p)}
             style={{ animationDelay: `${i * 50}ms` }}
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           />
         ))}
       </div>
@@ -50,13 +49,12 @@ export default function MediaMosaic({ photos = [] as Photo[] }: { photos?: Photo
           </button>
 
           {current && (
-            <Image
+            <img
               src={current.src || "/placeholder.svg"}
               alt={current.alt}
               width={current.width}
               height={current.height}
               className="mx-auto max-h-[85vh] w-auto object-contain"
-              sizes="(max-width: 768px) 90vw, 800px"
             />
           )}
           <DialogTitle className="sr-only">{current?.alt || "Foto"}</DialogTitle>

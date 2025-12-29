@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
+
 import { useViewer } from "@/components/viewer-provider"
 import type { Project, Post } from "@/lib/content-manager"
 import { useLanguage } from "@/components/language-provider"
@@ -29,13 +29,10 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
       {/* Columna de la imagen (1/3 del ancho) */}
       <figure className="relative w-full sm:w-1/3 h-32 sm:h-auto overflow-hidden">
         {!imageLoaded && <div className="h-full w-full bg-white/10 animate-pulse" />}
-        <Image
+        <img
           src={project.image || "/placeholder.svg"}
           alt={project.title[language]}
-          fill
-          className={`object-cover transition-all duration-700 ease-out group-hover:scale-110 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
           onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -47,7 +44,7 @@ export function EnhancedProjectCard({ project, delay = 0 }: { project: Project; 
           <h3 className="text-lg sm:text-sm font-bold group-hover:text-white transition-colors text-white/90">
             {project.title[language]}
           </h3>
-                    {project.subtitle && <p className="text-xs sm:text-sm text-white/60">{project.subtitle[language]}</p>}
+          {project.subtitle && <p className="text-xs sm:text-sm text-white/60">{project.subtitle[language]}</p>}
           {project.description && (
             <p className="line-clamp-2 text-xs sm:text-sm leading-relaxed text-white/60">{project.description[language]}</p>
           )}
@@ -80,7 +77,7 @@ export function EnhancedBlogCard({ post, delay = 0 }: { post: Post; delay?: numb
   return (
     <button
       onClick={() => openPost(post)}
-            className={[
+      className={[
         "group w-full p-4 sm:p-3 text-left font-mono",
         "border border-white/20 bg-white/5 transition-all duration-300",
         "hover:-translate-y-1 hover:bg-white/10 hover:border-white/30",

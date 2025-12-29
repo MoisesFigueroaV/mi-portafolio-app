@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PhotosApp from '../components/PhotosApp';
+import { personalInfo } from "@/lib/page-content";
+
+const title = `${personalInfo.name.es} - Fotos`;
+---
+
+<Layout title={title}>
+	<PhotosApp client:load />
+</Layout>

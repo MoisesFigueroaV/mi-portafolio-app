@@ -1,0 +1,69 @@
+---
+import { personalInfo } from "@/lib/page-content";
+import "@/styles/globals.css";
+
+const { title = `${personalInfo.name.es} - ${personalInfo.title.es}`, description = personalInfo.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/image-mesh-gradient.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={personalInfo.seo.keywords.join(", ")} />
+		<meta name="author" content={personalInfo.seo.author} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content={personalInfo.name.es} />
+		<meta property="og:image" content={personalInfo.seo.ogImage} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:creator" content={personalInfo.seo.twitterHandle} />
+		<meta name="twitter:image" content={personalInfo.seo.ogImage} />
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		
+		<!-- JSON-LD -->
+		<script is:inline type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			name: personalInfo.name.es,
+			jobTitle: personalInfo.title.es,
+			description: personalInfo.description,
+			url: personalInfo.website,
+			email: personalInfo.email,
+			sameAs: [personalInfo.github, personalInfo.twitter, personalInfo.linkedin].filter(Boolean),
+			address: {
+				"@type": "PostalAddress",
+				addressLocality: personalInfo.location.city,
+				addressCountry: personalInfo.location.country,
+			},
+		})} />
+	</head>
+	<body class="bg-black text-white antialiased font-mono">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--font-space-mono: 'Space Mono', monospace;
+	}
+	html {
+		font-family: var(--font-space-mono);
+	}
+</style>

@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+
 import { ChevronRight } from "lucide-react"
 
 type BreadcrumbItem = {
@@ -16,9 +16,9 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           <li key={i} className="flex items-center gap-2">
             {i > 0 && <ChevronRight className="h-4 w-4 sm:h-3 sm:w-3" />}
             {item.href ? (
-              <Link href={item.href} className="hover:text-white/80">
+              <a href={item.href} className="hover:text-white/80">
                 {item.label}
-              </Link>
+              </a>
             ) : (
               <span className="text-white/80">{item.label}</span>
             )}
