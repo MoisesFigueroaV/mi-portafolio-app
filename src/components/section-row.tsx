@@ -31,19 +31,15 @@ export default function SectionRow({
       <hr className="mb-6 sm:mb-8 lg:hidden border-white/20" />
       <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
         {/* Header móvil */}
-        <div className="mb-4 sm:mb-4 lg:hidden">
-          <div className="flex items-center gap-2">
-            {icon && <div className="text-white/60">{icon}</div>}
-            <div className="text-base sm:text-sm font-bold uppercase text-white/80">{label}</div>
-            {hint && <div className="text-base sm:text-sm text-white/60">— {hint}</div>}
-          </div>
+        <div className="mb-4 sm:mb-4 lg:hidden font-mono opacity-60 text-sm">
+          <span className="mr-2">$</span>
+          <span>{label}</span>
         </div>
 
         {/* Header desktop */}
-        <div className="mb-6 hidden lg:block">
-          <div className="text-sm font-bold uppercase tracking-wider text-white/80">{label}</div>
-          {hint && <div className="mt-2 text-sm text-white/60 leading-relaxed">{hint}</div>}
-          {icon && <div className="mt-4 text-white/60">{icon}</div>}
+        <div className="mb-6 hidden lg:block opacity-50 font-mono text-sm tracking-wide">
+          <span className="mr-2">$</span>
+          <span className="text-white/70">{label}</span>
         </div>
 
         <div>{children}</div>

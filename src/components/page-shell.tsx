@@ -16,14 +16,16 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       <SmoothScroll />
       <ScrollReveal />
 
-      {/* Fondo animado fijo con color más claro y visible */}
-      <div className="fixed inset-0 z-0 h-full w-full">
+      {/* Fondo animado fluido (WebGL) optimizado para "Humo" visible */}
+      <div
+        className="fixed inset-0 z-0 h-full w-full"
+      >
         <Plasma
-          color="#3a3a5e"
-          speed={isMobile ? 0.1 : 0.3}
+          color="#ffffff" // Blanco puro para visibilidad máxima
+          speed={isMobile ? 0.05 : 0.15}
           direction="forward"
-          scale={1.1}
-          opacity={0.5}
+          scale={2.0}
+          opacity={0.95} // Opacidad extrema pero con máscara se ve bien
           mouseInteractive={!isMobile}
         />
       </div>
@@ -34,16 +36,16 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Layout principal completamente transparente */}
-      <div className="relative z-10 mx-auto max-w-8xl px-4 pb-24 pt-16 sm:px-4 md:px-12 lg:px-16 xl:px-20 sm:pb-28 sm:pt-16">
-        <div className="grid grid-cols-12 gap-x-8 gap-y-8 sm:gap-x-8 sm:gap-y-10 lg:gap-x-16">
-          {/* Aside - solo visible en desktop */}
-          <aside className="relative col-span-3 hidden lg:block">
+      <div className="relative z-10 mx-auto max-w-8xl px-4 pb-24 pt-16 sm:px-6 md:px-8 lg:px-12 xl:px-20 sm:pb-28 sm:pt-20">
+        <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-12 lg:gap-x-12 xl:gap-x-16">
+          {/* Aside - solo visible en pantallas grandes */}
+          <aside className="relative hidden lg:col-span-3 lg:block">
             <SiteAside />
           </aside>
 
           {/* Contenido principal */}
-          <section className="col-span-12 lg:col-span-9">
-            <div className="mx-auto max-w-4xl">{children}</div>
+          <section className="lg:col-span-9">
+            <div className="mx-auto max-w-3xl lg:max-w-4xl">{children}</div>
           </section>
         </div>
       </div>

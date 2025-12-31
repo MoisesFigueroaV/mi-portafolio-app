@@ -21,34 +21,36 @@ export default function TechStack({
   const { language } = useLanguage()
 
   return (
-    <div className="grid gap-6 sm:gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col gap-4">
       {items.map((it, index) => (
         <div
           key={it.name.es}
-          className="p-4 sm:p-3 border border-white/20 bg-white/5 text-white reveal-on-scroll transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 flex flex-col h-full font-mono"
+          className="group block w-full p-5 sm:p-8 bg-[#050505] border border-white/10 hover:border-white/20 transition-all duration-300 reveal-on-scroll"
           style={{ animationDelay: `${index * 150}ms` }}
         >
-          <div>
-            <div className="mb-3 sm:mb-1 flex items-start gap-2">
-              <BadgeCheck className="h-5 w-5 text-white" />
-              <h3 className="text-lg sm:text-sm font-bold">{it.name[language]}</h3>
+          {/* Header with Role */}
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div className="font-mono text-xs text-white/20 uppercase tracking-wider">
+              {it.role || 'tool'}
             </div>
-            <p className="text-base sm:text-xs text-white/70 leading-relaxed">{it.description[language]}</p>
+            {/* Icon removed */}
           </div>
-          <div className="mt-auto pt-4 sm:pt-2 flex flex-wrap gap-2">
+
+          {/* Title - Matched Project Style */}
+          <h3 className="text-xl sm:text-2xl font-mono text-white mb-3 transition-colors break-all sm:break-normal">
+            ./{it.name[language].toLowerCase().replace(/\s+/g, '_').replace(/\+/g, '_plus_')}
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm text-white/40 font-mono mb-6 sm:mb-8 truncate">
+            {it.description[language]}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 sm:gap-4 text-xs font-mono text-white/20">
             {it.tags?.map((t) => (
-              <span
-                key={t}
-                className="px-3 py-1.5 sm:px-2 sm:py-0.5 text-sm sm:text-[10px] text-white/60 border border-white/20"
-              >
-                {t}
-              </span>
+              <span key={t}>#{t.toLowerCase()}</span>
             ))}
-            {it.role && (
-              <span className="px-3 py-1.5 sm:px-2 sm:py-0.5 text-sm sm:text-[10px] text-white/60 border border-white/20">
-                {it.role}
-              </span>
-            )}
           </div>
         </div>
       ))}

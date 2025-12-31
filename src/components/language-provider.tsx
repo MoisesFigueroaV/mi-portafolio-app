@@ -9,6 +9,7 @@ type LanguageContextType = {
   language: Language
   setLanguage: (lang: Language) => void
   t: (key: TranslationKey) => string
+  isTransitioning: boolean
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null)
@@ -23,6 +24,7 @@ export function useLanguage() {
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("es")
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio-language") as Language
@@ -32,11 +34,21 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang)
-    localStorage.setItem("portfolio-language", lang)
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = lang
-    }
+    if (lang === language) return
+
+    setIsTransitioning(true)
+
+    // Delay de 300ms para la transición de salida
+    setTimeout(() => {
+      setLanguageState(lang)
+      localStorage.setItem("portfolio-language", lang)
+      if (typeof document !== "undefined") {
+        document.documentElement.lang = lang
+      }
+
+      // Pequeño delay extra para asegurar que el DOM se actualizó antes de mostrar
+      setTimeout(() => setIsTransitioning(false), 50)
+    }, 300)
   }
 
   const t = (key: TranslationKey): string => {
@@ -67,5 +79,5 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return translation
   }
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  return <LanguageContext.Provider value={{ language, setLanguage, t, isTransitioning }}>{children}</LanguageContext.Provider>
 }

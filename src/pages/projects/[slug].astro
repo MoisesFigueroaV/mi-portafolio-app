@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDetail from '../../components/ProjectDetail';
+import { projects } from "../../lib/projects-data";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const title = project?.title?.es || "Proyecto";
+---
+
+<Layout title={title}>
+	<ProjectDetail client:load project={project} />
+</Layout>

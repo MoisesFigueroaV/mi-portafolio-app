@@ -44,30 +44,30 @@ export default function SiteAside() {
         <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{t("social")}</h3>
         <ul className="space-y-3">
           <li>
-            <a 
-              href={personalInfo.github} 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noreferrer"
               className="underline text-white/60 transition-colors hover:text-white/80"
             >
               {t("github_link")}
             </a>
           </li>
           <li>
-            <a 
-              href={personalInfo.twitter} 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href={personalInfo.twitter}
+              target="_blank"
+              rel="noreferrer"
               className="underline text-white/60 transition-colors hover:text-white/80"
             >
               <span className="underline">{t("twitter_link")}</span>
             </a>
           </li>
           <li>
-            <a 
-              href={personalInfo.linkedin} 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noreferrer"
               className="underline text-white/60 transition-colors hover:text-white/80"
             >
               {t("linkedin_link")}
@@ -77,7 +77,7 @@ export default function SiteAside() {
       </section>
 
       {/* Nueva sección de Paleta de Colores */}
-      <section className="mt-40 opacity-75">
+      <section className="mt-80 opacity-50 hover:opacity-100 transition-opacity">
         <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{language === "es" ? "Paleta" : "Palette"}</h3>
         <div className="flex flex-col gap-2 font-mono text-xs">
           {colors.map((color) => (

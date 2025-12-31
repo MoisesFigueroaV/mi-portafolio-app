@@ -2,60 +2,56 @@
 
 import { useEffect } from "react"
 
-export default function SmoothScroll({ duration = 800 }: { duration?: number }) {
+export default function SmoothScroll() {
   useEffect(() => {
-    function easeInOutQuad(t: number) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
-    }
+    // Importación dinámica para asegurar que se ejecute solo en cliente
+    import("lenis").then((LenisModule) => {
+      const Lenis = LenisModule.default;
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4x87
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
 
-    function animateScroll(targetY: number, ms: number) {
-      const startY = window.scrollY
-      const diff = targetY - startY
-      const start = performance.now()
-
-      function step(now: number) {
-        const elapsed = now - start
-        const t = Math.min(1, elapsed / ms)
-        const eased = easeInOutQuad(t)
-        window.scrollTo(0, startY + diff * eased)
-        if (t < 1) requestAnimationFrame(step)
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
       }
-      requestAnimationFrame(step)
-    }
 
-    function onClick(e: MouseEvent) {
-      const el = e.target as HTMLElement | null
-      if (!el) return
-      // Busca el <a> más cercano
-      const anchor = el.closest("a") as HTMLAnchorElement | null
-      if (!anchor) return
-      const href = anchor.getAttribute("href") || ""
-      if (!href.startsWith("#")) return
-      const id = href.slice(1)
-      const target = document.getElementById(id)
-      if (!target) return
+      requestAnimationFrame(raf);
 
-      e.preventDefault()
+      // Handle anchor links with Lenis
+      function onClick(e: MouseEvent) {
+        const el = e.target as HTMLElement | null;
+        if (!el) return;
+        const anchor = el.closest("a") as HTMLAnchorElement | null;
+        if (!anchor) return;
+        const href = anchor.getAttribute("href") || "";
+        if (!href.startsWith("#")) return;
+        const id = href.slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
 
-      // Respeta scroll margin-top definido en Tailwind (scroll-mt-24 en secciones)
-      const styles = window.getComputedStyle(target)
-      const scrollMt = Number.parseInt(styles.scrollMarginTop || "0", 10) || 0
-      const rect = target.getBoundingClientRect()
-      const targetY = window.scrollY + rect.top - scrollMt
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80 }); // Adjust offset for header
 
-      animateScroll(targetY, duration)
+        window.setTimeout(() => {
+          try {
+            history.pushState(null, "", `#${id}`);
+          } catch { }
+        }, 1000);
+      }
 
-      // Actualiza el hash al final de la animación
-      window.setTimeout(() => {
-        try {
-          history.pushState(null, "", `#${id}`)
-        } catch {}
-      }, duration)
-    }
+      document.addEventListener("click", onClick, { passive: false });
 
-    document.addEventListener("click", onClick, { passive: false })
-    return () => document.removeEventListener("click", onClick)
-  }, [duration])
+      return () => {
+        lenis.destroy();
+        document.removeEventListener("click", onClick);
+      }
+    });
 
-  return null
+  }, []);
+
+  return null;
 }

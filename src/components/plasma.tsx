@@ -59,8 +59,8 @@ void mainImage(out vec4 o, vec2 C) {
   float i, d, z, T = iTime * uSpeed * uDirection;
   vec3 O, p, S;
 
-  // Optimizado para móvil con menos iteraciones pero más visibilidad
-  for (vec2 r = iResolution.xy, Q; ++i < 25.; O += o.w/d*o.xyz) {
+  // Optimizado para móvil (balance rendimiento/visibilidad)
+  for (vec2 r = iResolution.xy, Q; ++i < 18.; O += o.w/d*o.xyz) {
     p = z*normalize(vec3(C-.5*r,r.y)); 
     p.z -= 4.; 
     S = p;
@@ -121,9 +121,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
     const directionMultiplier = direction === "reverse" ? -1.0 : 1.0
 
-    // Configuración mejorada para móvil
+    // Configuración optimizada (revertida a segura)
     const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false
-    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.2 : 1.5)
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.0 : 1.5)
 
     let renderer: Renderer | null = null
     let canvas: HTMLCanvasElement | null = null
@@ -136,6 +136,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
         alpha: true,
         antialias: false,
         dpr: dpr,
+        // Eliminado depth/stencil: false por problemas de visibilidad
       })
 
       const gl = renderer.gl
@@ -235,7 +236,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
       let raf = 0
       let lastTime = 0
-      const targetFPS = isMobile ? 45 : 60
+      const targetFPS = isMobile ? 30 : 60 // 30fps en móvil para batería
       const frameInterval = 1000 / targetFPS
       const t0 = performance.now()
 
@@ -303,9 +304,8 @@ export const Plasma: React.FC<PlasmaProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full relative overflow-hidden transition-opacity duration-1000 ${
-        isReady ? "opacity-100" : "opacity-0"
-      }`}
+      className={`w-full h-full relative overflow-hidden transition-opacity duration-1000 ${isReady ? "opacity-100" : "opacity-0"
+        }`}
     />
   )
 }

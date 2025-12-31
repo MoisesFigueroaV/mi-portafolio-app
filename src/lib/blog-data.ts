@@ -3,6 +3,7 @@ import type { Post } from "./content-manager"
 // 📝 BLOG POSTS - Agrega/edita aquí tus artículos
 export const posts: Post[] = [
   {
+    slug: "blockchain-historia-fundamentos",
     title: { es: "Blockchain: historia, fundamentos y futuro", en: "Blockchain: History, Fundamentals, and Future" },
     readingTime: "15 min",
     excerpt: { es: "Una introducción a la tecnología que está cambiando el mundo.", en: "An introduction to the technology that is changing the world." },

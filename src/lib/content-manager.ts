@@ -7,6 +7,7 @@ export type LocalizedString = {
 
 export type Project = {
   // ✅ OBLIGATORIO
+  slug: string // "mi-proyecto"
   title: LocalizedString
   subtitle: LocalizedString
   description: LocalizedString
@@ -27,6 +28,7 @@ export type Project = {
 
 export type Post = {
   // ✅ OBLIGATORIO
+  slug: string // "mi-articulo"
   title: LocalizedString
   content: LocalizedString // Contenido en Markdown
   updatedAt: string // Formato: "2024-01-15"

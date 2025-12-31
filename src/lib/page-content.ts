@@ -75,7 +75,7 @@ export const techStackItems: TechStackItem[] = [
     tags: ["Auth", "Realtime", "Storage", "SQL"],
     role: "database",
   },
-    {
+  {
     name: { es: "Power BI + Python", en: "Power BI + Python" },
     description: {
       es: "Herramientas para procesos ETL, análisis de datos y dashboards interactivos.",
@@ -103,15 +103,26 @@ export type TimelineItem = {
   location: LocalizedString
   description: LocalizedString
   current?: boolean
+  technologies?: string[]
 }
 
 export const timelineData: TimelineItem[] = [
-    {
-      year: "2025",
-      title: { es: "Analista de Datos", en: "Data Analyst" },
-      company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A" },
-      location: { es: "Concepción, Chile", en: "Concepción, Chile" },
-      description: { es: "Implementé un proceso completo de ETL para integrar y depurar datos de diversas fuentes. Diseñé y desarrollé un Dashboard integral en Power BI, centralizando KPIs clave que automatizó la generación de reportes y análisis. Realicé análisis de tendencias sobre la rotación de personal, identificando factores clave para proponer estrategias de retención más efectivas.", en: "Implemented a complete ETL process to integrate and debug data from various sources. Designed and developed a comprehensive Power BI Dashboard, centralizing key KPIs that automated report generation and analysis. Performed trend analysis on personnel turnover, identifying key factors to propose more effective retention strategies." },
-      current: false,
-    },
-  ]
+  {
+    year: "2025",
+    title: { es: "Analista de Datos", en: "Data Analyst" },
+    company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A" },
+    location: { es: "Concepción, Chile", en: "Concepción, Chile" },
+    description: { es: "Implementé un proceso completo de ETL para integrar y depurar datos de diversas fuentes. Diseñé y desarrollé un Dashboard integral en Power BI, centralizando KPIs clave.", en: "Implemented a complete ETL process. Designed and developed a comprehensive Power BI Dashboard." },
+    current: false,
+    technologies: ["ETL", "Power BI", "Python"]
+  },
+  {
+    year: "2024",
+    title: { es: "Freelance", en: "Freelance" },
+    company: { es: "Fullstack Dev", en: "Fullstack Dev" },
+    location: { es: "Remoto", en: "Remote" },
+    description: { es: "Desarrollo de aplicaciones web a medida.", en: "Custom web application development." },
+    current: false,
+    technologies: ["React", "Next.js", "TypeScript"]
+  }
+]
