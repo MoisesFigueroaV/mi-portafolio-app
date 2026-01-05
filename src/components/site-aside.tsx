@@ -40,6 +40,22 @@ export default function SiteAside() {
         </ul>
       </section>
 
+      {/* CV Download Section */}
+      <section>
+        <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{language === "es" ? "Currículum" : "Resume"}</h3>
+        <ul className="space-y-3">
+          <li>
+            <a
+              href={personalInfo.cv}
+              download
+              className="underline text-white/60 transition-colors hover:text-white/80"
+            >
+              {language === "es" ? "Descargar CV" : "Download CV"}
+            </a>
+          </li>
+        </ul>
+      </section>
+
       <section>
         <h3 className="mb-4 font-bold uppercase tracking-wide text-white/90">{t("social")}</h3>
         <ul className="space-y-3">

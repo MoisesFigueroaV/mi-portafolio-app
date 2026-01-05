@@ -112,17 +112,47 @@ export const timelineData: TimelineItem[] = [
     title: { es: "Analista de Datos", en: "Data Analyst" },
     company: { es: "Sociedad Pesquera Landes S.A", en: "Sociedad Pesquera Landes S.A" },
     location: { es: "Concepción, Chile", en: "Concepción, Chile" },
-    description: { es: "Implementé un proceso completo de ETL para integrar y depurar datos de diversas fuentes. Diseñé y desarrollé un Dashboard integral en Power BI, centralizando KPIs clave.", en: "Implemented a complete ETL process. Designed and developed a comprehensive Power BI Dashboard." },
+    description: {
+      es: "Implementé procesos ETL para integración y limpieza de datos desde Excel y Talana. Diseñé dashboards en Power BI centralizando KPIs clave de gestión de personas, reduciendo significativamente el tiempo de generación de reportes.",
+      en: "Implemented ETL processes for data integration and cleansing from Excel and Talana. Designed Power BI dashboards centralizing key people management KPIs, significantly reducing report generation time."
+    },
     current: false,
-    technologies: ["ETL", "Power BI", "Python"]
+    technologies: ["Power BI", "SQL", "Excel", "Python"]
+  },
+  {
+    year: "2025",
+    title: { es: "Desarrollador Full-Stack", en: "Full-Stack Developer" },
+    company: { es: "Proyecto Capstone", en: "Capstone Project" },
+    location: { es: "Concepción, Chile", en: "Concepción, Chile" },
+    description: {
+      es: "Desarrollé completamente una plataforma web de gestión de eventos. Backend con Bun y Elysia.js (PostgreSQL + Drizzle ORM, autenticación JWT). Frontend con Next.js (App Router) y Tailwind CSS, creando un sistema de componentes reutilizables.",
+      en: "Fully developed a web platform for event management. Backend with Bun and Elysia.js (PostgreSQL + Drizzle ORM, JWT auth). Frontend with Next.js (App Router) and Tailwind CSS, creating a reusable component system."
+    },
+    current: false,
+    technologies: ["Next.js", "Bun", "Elysia.js", "PostgreSQL", "Drizzle ORM", "Tailwind CSS"]
   },
   {
     year: "2024",
     title: { es: "Freelance", en: "Freelance" },
     company: { es: "Fullstack Dev", en: "Fullstack Dev" },
     location: { es: "Remoto", en: "Remote" },
-    description: { es: "Desarrollo de aplicaciones web a medida.", en: "Custom web application development." },
+    description: {
+      es: "Desarrollo de aplicaciones web a medida.",
+      en: "Custom web application development."
+    },
     current: false,
     technologies: ["React", "Next.js", "TypeScript"]
+  },
+  {
+    year: "2022",
+    title: { es: "Track Leader Base de Datos", en: "Track Leader Database Track" },
+    company: { es: "CITT Duoc UC", en: "CITT Duoc UC" },
+    location: { es: "Concepción, Chile", en: "Concepción, Chile" },
+    description: {
+      es: "Diseñé y dicté un taller práctico sobre fundamentos de bases de datos NoSQL. Realicé demostraciones en vivo sobre configuración y gestión de MongoDB (Atlas y Compass), guiando a estudiantes en proyectos individuales.",
+      en: "Designed and delivered a hands-on workshop on NoSQL database fundamentals. Conducted live demonstrations on MongoDB configuration and management (Atlas and Compass), guiding students in individual projects."
+    },
+    current: false,
+    technologies: ["MongoDB", "NoSQL", "Atlas", "Compass"]
   }
 ]
