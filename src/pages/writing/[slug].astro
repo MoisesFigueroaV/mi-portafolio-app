@@ -1,0 +1,111 @@
+---
+import { render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import T from "@/components/T.astro";
+import { formatDate, getPosts, pick, type Post } from "@/lib/writing";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: Post };
+const title = pick(post, "title");
+const excerpt = pick(post, "excerpt");
+const date = formatDate(post.date);
+// Si falta una traducción, se muestra la otra versión en ambos idiomas
+const enEntry = post.en ?? post.es!;
+const esEntry = post.es ?? post.en!;
+const { Content: ContentEn } = await render(enEntry);
+const { Content: ContentEs } = await render(esEntry);
+---
+
+<Base title={title} description={excerpt}>
+  <SubHeader title={title}>
+    <p class="meta"><T t={date} /> · {post.readingTime} min</p>
+  </SubHeader>
+
+  <article class="prose" data-l="en" lang={enEntry.data.lang}>
+    <ContentEn />
+  </article>
+  <article class="prose" data-l="es" lang={esEntry.data.lang}>
+    <ContentEs />
+  </article>
+
+  <a class="back-list" href="/writing">← <T t={{ en: "All writing", es: "Todos los escritos" }} /></a>
+</Base>
+
+<style>
+  .meta {
+    color: var(--dim);
+  }
+  .back-list {
+    color: var(--dim);
+  }
+  .prose {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .prose :global(h2) {
+    font-size: 16px;
+    margin: 2.2em 0 0.7em;
+  }
+  .prose :global(h3) {
+    font-size: 15px;
+    margin: 1.8em 0 0.6em;
+  }
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(ol),
+  .prose :global(pre),
+  .prose :global(blockquote) {
+    margin: 0 0 1em;
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.2em;
+  }
+  .prose :global(li + li) {
+    margin-top: 0.35em;
+  }
+  .prose :global(strong) {
+    color: var(--fg);
+    font-weight: 500;
+  }
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 2em 0;
+  }
+  .prose :global(blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: 14px;
+    color: var(--fg);
+  }
+  .prose :global(code:not(pre code)) {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--surface);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .prose :global(img) {
+    border-radius: 6px;
+  }
+  .prose :global(table) {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 0 0 1em;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    border-bottom: 1px solid var(--line);
+    padding: 6px 12px 6px 0;
+    text-align: left;
+  }
+</style>

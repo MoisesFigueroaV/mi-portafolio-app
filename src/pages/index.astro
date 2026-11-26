@@ -1,8 +1,183 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PortfolioApp from '../components/PortfolioApp';
+import Base from "@/layouts/Base.astro";
+import Avatar from "@/components/Avatar.astro";
+import Row from "@/components/Row.astro";
+import T from "@/components/T.astro";
+import { about, education, experience, profile, projects, social } from "@/data/site";
+import { formatDate, getPosts, pick } from "@/lib/writing";
+
+const posts = (await getPosts()).slice(0, 3);
 ---
 
-<Layout>
-	<PortfolioApp client:load />
-</Layout>
+<Base>
+  <header class="hero">
+    <Avatar />
+    <div>
+      <h1>{profile.name}</h1>
+      <T t={profile.role} as="p" />
+    </div>
+  </header>
+
+  <section aria-labelledby="h-about">
+    <h2 class="section-title" id="h-about"><T t={{ en: "About", es: "Sobre mí" }} /></h2>
+    <div class="stack-p inline-links">
+      {about.map((p) => <T t={p} as="p" html />)}
+    </div>
+  </section>
+
+  <section aria-labelledby="h-exp">
+    <h2 class="section-title" id="h-exp"><T t={{ en: "Work Experience", es: "Experiencia" }} /></h2>
+    <div class="rows">
+      {
+        experience.map((e) => (
+          <Row when={e.years}>
+            <span class="t">
+              <T t={e.role} /> – {e.company}
+            </span>
+            <span class="meta">
+              {e.place} · <T t={e.dates} />
+            </span>
+            <T t={e.summary} as="p" />
+            <span class="tags">{e.stack.join(" • ")}</span>
+          </Row>
+        ))
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="h-proj">
+    <h2 class="section-title" id="h-proj"><T t={{ en: "Projects", es: "Proyectos" }} /></h2>
+    <div class="rows">
+      {
+        projects.map((p) => (
+          <Row when={p.when}>
+            <img class="ico" src={p.icon} alt="" width="28" height="28" />
+            <a class="t" href={`/projects/${p.slug}`}>
+              <T t={p.title} />
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <T t={p.summary} as="p" />
+            <span class="tags">{p.stack.join(" • ")}</span>
+          </Row>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    posts.length > 0 && (
+      <section aria-labelledby="h-writing">
+        <h2 class="section-title" id="h-writing">
+          <a href="/writing">
+            <T t={{ en: "Writing", es: "Escritos" }} />
+          </a>
+        </h2>
+        <div class="rows">
+          {posts.map((p) => (
+            <Row when={formatDate(p.date)}>
+              <a class="t" href={`/writing/${p.slug}`}>
+                <T t={pick(p, "title")} />
+              </a>
+              <T t={pick(p, "excerpt")} as="p" />
+            </Row>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section aria-labelledby="h-edu">
+    <h2 class="section-title" id="h-edu"><T t={{ en: "Education", es: "Educación" }} /></h2>
+    <div class="rows">
+      {
+        education.map((e) => (
+          <Row when={e.years}>
+            <span class="t">
+              <T t={e.title} /> – {e.school}
+            </span>
+            <T t={e.note} as="p" />
+          </Row>
+        ))
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="h-links">
+    <h2 class="section-title" id="h-links">Links</h2>
+    <div class="links">
+      {
+        social.map((s) => (
+          <Row when={s.label}>
+            <a href={s.url} target="_blank" rel="noopener">
+              {s.handle}
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </Row>
+        ))
+      }
+      <Row when="Email">
+        <button type="button" class="copy" data-copy={profile.email}>
+          {profile.email}
+          <small data-copy-note>
+            <span class="idle"><T t={{ en: "copy", es: "copiar" }} /></span>
+            <span class="done"><T t={{ en: "copied", es: "copiado" }} /></span>
+          </small>
+        </button>
+      </Row>
+      <Row when="CV">
+        <a href={profile.cv} target="_blank" rel="noopener">
+          <T t={{ en: "Download PDF (Spanish)", es: "Descargar PDF" }} />
+          <span class="arrow" aria-hidden="true">↓</span>
+        </a>
+      </Row>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    margin-top: 2px;
+  }
+  .ico {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+  .links {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .copy {
+    all: unset;
+    cursor: pointer;
+    color: var(--fg);
+    overflow-wrap: anywhere;
+  }
+  .copy:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .copy small {
+    color: var(--dim);
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  .copy .done,
+  .copy small[data-done] .idle {
+    display: none;
+  }
+  .copy small[data-done] .done {
+    display: inline;
+  }
+</style>

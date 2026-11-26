@@ -1,13 +1,12 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+// @ts-check
+import { defineConfig } from "astro/config";
 
-// https://astro.build/config
+// https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-  integrations: [
-    react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-  ],
+  markdown: {
+    shikiConfig: {
+      // Dos temas: el CSS elige uno según data-theme en <html>
+      themes: { light: "github-light", dark: "github-dark-dimmed" },
+    },
+  },
 });

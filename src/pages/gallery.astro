@@ -1,0 +1,159 @@
+---
+import Base from "@/layouts/Base.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import T from "@/components/T.astro";
+import { photos } from "@/data/site";
+
+const title = { en: "Gallery", es: "Galería" };
+const intro = { en: "Black-and-white photos, mostly taken while walking.", es: "Fotos en blanco y negro, casi todas tomadas caminando." };
+---
+
+<Base title={title} description={intro}>
+  <SubHeader title={title}>
+    <T t={intro} as="p" />
+  </SubHeader>
+
+  <section class="grid">
+    {
+      photos.map((p, i) => (
+        <button type="button" class="shot" data-open={i} aria-label={p.alt.en}>
+          <img src={p.src} width={p.width} height={p.height} alt={p.alt.en} loading={i < 4 ? "eager" : "lazy"} decoding="async" />
+        </button>
+      ))
+    }
+  </section>
+
+  <dialog class="viewer" aria-label="Photo">
+    <figure>
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+    <div class="nav">
+      <button type="button" data-step="-1" aria-label="Previous">←</button>
+      <button type="button" data-close aria-label="Close">✕</button>
+      <button type="button" data-step="1" aria-label="Next">→</button>
+    </div>
+  </dialog>
+
+  <script is:inline type="application/json" id="photo-data" set:html={JSON.stringify(photos)} />
+</Base>
+
+<script>
+  type Photo = { src: string; width: number; height: number; alt: { en: string; es: string } };
+  const data: Photo[] = JSON.parse(document.getElementById("photo-data")?.textContent ?? "[]");
+  const dlg = document.querySelector<HTMLDialogElement>("dialog.viewer");
+  const img = dlg?.querySelector("img");
+  const cap = dlg?.querySelector("figcaption");
+  let cur = 0;
+
+  function show(i: number) {
+    if (!dlg || !img || !cap) return;
+    cur = (i + data.length) % data.length;
+    const p = data[cur];
+    const lang = document.documentElement.dataset.lang === "es" ? "es" : "en";
+    img.src = p.src;
+    img.width = p.width;
+    img.height = p.height;
+    img.alt = p.alt[lang];
+    cap.textContent = `${p.alt[lang]} · ${cur + 1}/${data.length}`;
+    if (!dlg.open) dlg.showModal();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-open]").forEach((b) =>
+    b.addEventListener("click", () => show(Number(b.dataset.open))),
+  );
+  dlg?.querySelectorAll<HTMLButtonElement>("[data-step]").forEach((b) =>
+    b.addEventListener("click", () => show(cur + Number(b.dataset.step))),
+  );
+  dlg?.querySelector("[data-close]")?.addEventListener("click", () => dlg.close());
+  dlg?.addEventListener("click", (e) => {
+    if (e.target === dlg) dlg.close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!dlg?.open) return;
+    if (e.key === "ArrowRight") show(cur + 1);
+    if (e.key === "ArrowLeft") show(cur - 1);
+  });
+</script>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .shot {
+    all: unset;
+    cursor: zoom-in;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  .shot:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .shot:hover img {
+    transform: scale(1.03);
+  }
+  .viewer {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(92vw, 1100px);
+    max-height: 92vh;
+    color: var(--fg);
+  }
+  .viewer::backdrop {
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+  }
+  .viewer figure {
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .viewer img {
+    max-height: 80vh;
+    width: auto;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+  .viewer figcaption {
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  .viewer .nav {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 10px;
+  }
+  .viewer .nav button {
+    all: unset;
+    cursor: pointer;
+    color: var(--dim);
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+  .viewer .nav button:hover {
+    color: var(--fg);
+  }
+  .viewer .nav button:focus-visible {
+    outline: 1px solid var(--accent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shot img {
+      transition: none;
+    }
+  }
+</style>

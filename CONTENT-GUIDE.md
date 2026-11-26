@@ -1,71 +1,61 @@
-# 📝 Guía para Modificar Contenido
+# Guía de contenido
 
-## 🎯 Información Personal
+Todo texto visible va en dos idiomas con la forma `{ en: "...", es: "..." }`. El inglés es el idioma principal.
 
-Edita `src/lib/page-content.ts` en el objeto `personalInfo` para cambiar:
-- ✅ Nombre, título, descripción
-- ✅ Email, GitHub, Twitter, LinkedIn
-- ✅ Ubicación y modo de trabajo
-- ✅ Configuración SEO
+## Proyectos
 
-## 🚀 Agregar Proyectos
+1. Sube un ícono cuadrado a `public/projects/` (SVG o PNG de 64×64), por ejemplo `public/projects/mi-proyecto.svg`.
+2. En `src/data/site.ts`, copia la entrada de `projects` y edítala:
 
-1. **Sube la imagen** a `public/projects/nombre-proyecto.png` (o jpeg)
-2. **Edita** `src/lib/projects-data.ts` en la sección `projects`
-3. **Copia** un proyecto existente y modifica. Recuerda añadir la traducción en inglés:
-   ```typescript
-   {
-     title: { es: "Mi Nuevo Proyecto", en: "My New Project" },
-     subtitle: { es: "Descripción corta", en: "Short description" },
-     description: { es: "Descripción detallada...", en: "Detailed description..." },
-     image: "/projects/mi-proyecto.png", // Tu imagen en public/projects
-     siteUrl: "https://mi-sitio.com", // URL del proyecto
-     repoUrl: "https://github.com/usuario/repo", // GitHub
-     tags: ["React", "TypeScript"], // Tecnologías
-     updatedAt: "2024-01-15", // Fecha actual
-     featured: true, // true = aparece en homepage
-   }
-   ```
+```ts
+{
+  slug: "mi-proyecto",                       // URL: /projects/mi-proyecto
+  when: { en: "2026", es: "2026" },          // o { en: "Ongoing", es: "En curso" }
+  title: { en: "My project", es: "Mi proyecto" },
+  summary: { en: "One sentence.", es: "Una frase." },
+  stack: ["Python", "PostgreSQL"],
+  icon: "/projects/mi-proyecto.svg",
+  repo: "https://github.com/...",            // opcional
+  url: "https://...",                        // opcional
+  overview: { en: "...", es: "..." },        // párrafo de la página de detalle
+  features: [{ en: "...", es: "..." }],      // lista "What's inside"
+  decisions: [{ en: "...", es: "..." }],     // opcional, lista "Details"
+},
+```
 
-## 📝 Agregar Blog Posts
+El orden del arreglo es el orden en la página.
 
-1. **Edita** `src/lib/blog-data.ts` en la sección `posts`
-2. **Copia** un post existente y modifica. Recuerda añadir la traducción en inglés:
-   ```typescript
-   {
-     title: { es: "Mi Nuevo Post", en: "My New Post" },
-     readingTime: "5 min",
-     excerpt: { es: "Resumen corto...", en: "Short excerpt..." },
-     updatedAt: "2024-01-15",
-     content: {
-        es: `
-          # Mi Post
-          Contenido en **Markdown**.
-        `,
-        en: `
-          # My Post
-          Content in **Markdown**.
-        `
-     }
-   }
-   ```
+## Experiencia y educación
 
-## 📸 Agregar Fotos
+En `src/data/site.ts`, arreglos `experience` y `education`. `years` es lo que aparece en la columna izquierda; `dates` es la línea pequeña bajo el cargo.
 
-1. **Sube la imagen** a `public/photos/mi-foto.jpg`
-2. **Edita** `src/lib/images-data.ts` en la sección `photos`:
-   ```typescript
-   { src: "/photos/mi-foto.jpg", alt: "Descripción de la foto" }
-   ```
+## Artículos
 
-## 🔗 Cambiar Enlaces
+Cada artículo son dos archivos en `src/content/writing/`, uno por idioma, con el mismo valor en `post`:
 
-Todos los enlaces se actualizan automáticamente desde `src/lib/page-content.ts` en el objeto `personalInfo`.
+```md
+---
+title: "My article"
+excerpt: "One sentence."
+date: 2026-11-26
+readingTime: 6
+lang: en
+post: my-article        # URL: /writing/my-article (igual en los dos archivos)
+draft: false            # opcional: true lo oculta
+---
 
-## 🎨 Personalizar Tema
+Text in Markdown. Start sections with ## (the page already has the title).
+```
 
-Los estilos globales están en `src/styles/globals.css`. La configuración de Tailwind está en `tailwind.config.mjs`.
+Si falta una traducción, el sitio muestra la versión que exista en ambos idiomas.
 
-## 📊 SEO
+## Fotos
 
-El SEO se configura automáticamente desde `src/lib/page-content.ts` en el objeto `personalInfo.seo`.
+1. Sube la foto a `public/photos/` en webp, idealmente de no más de 1400 px de lado.
+2. Agrégala a `photos` en `src/data/site.ts` con su ancho, alto y texto alternativo.
+
+## CV, avatar y redes
+
+- CV: reemplaza `public/cv/moises-figueroa-cv.pdf` manteniendo el nombre.
+- Avatar: `public/avatar.png` (32×32). Si cambias el dibujo, ajusta la posición de los párpados de la gatita en `src/components/Avatar.astro`.
+- Redes, email y ubicación: `profile` y `social` en `src/data/site.ts`.

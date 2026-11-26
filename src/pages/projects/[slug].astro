@@ -1,19 +1,101 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ProjectDetail from '../../components/ProjectDetail';
-import { projects } from "../../lib/projects-data";
+import Base from "@/layouts/Base.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import T from "@/components/T.astro";
+import { projects, type Project } from "@/data/site";
 
 export function getStaticPaths() {
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
-  }));
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
 }
 
-const { project } = Astro.props;
-const title = project?.title?.es || "Proyecto";
+const { project } = Astro.props as { project: Project };
 ---
 
-<Layout title={title}>
-	<ProjectDetail client:load project={project} />
-</Layout>
+<Base title={project.title} description={project.summary}>
+  <SubHeader title={project.title}>
+    <div class="head">
+      <img src={project.icon} alt="" width="40" height="40" />
+      <T t={project.summary} as="p" />
+    </div>
+  </SubHeader>
+
+  <section>
+    <h2 class="section-title"><T t={{ en: "Overview", es: "Resumen" }} /></h2>
+    <T t={project.overview} as="p" />
+  </section>
+
+  <section>
+    <h2 class="section-title"><T t={{ en: "What's inside", es: "Qué tiene" }} /></h2>
+    <ul class="list">
+      {project.features.map((f) => <T t={f} as="li" />)}
+    </ul>
+  </section>
+
+  {
+    project.decisions && (
+      <section>
+        <h2 class="section-title">
+          <T t={{ en: "Details", es: "Detalles" }} />
+        </h2>
+        <ul class="list">
+          {project.decisions.map((d) => (
+            <T t={d} as="li" />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section>
+    <h2 class="section-title">Stack</h2>
+    <p class="tags">{project.stack.join(" • ")}</p>
+  </section>
+
+  {
+    (project.repo || project.url) && (
+      <section class="links">
+        {project.url && (
+          <a href={project.url} target="_blank" rel="noopener">
+            <T t={{ en: "Visit site", es: "Ver sitio" }} />
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+        {project.repo && (
+          <a href={project.repo} target="_blank" rel="noopener">
+            <T t={{ en: "Source code", es: "Código fuente" }} />
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .head {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .head img {
+    flex: none;
+    border-radius: 8px;
+  }
+  .list {
+    margin: 0;
+    padding-left: 1.1em;
+    display: grid;
+    gap: 8px;
+  }
+  .list li::marker {
+    color: var(--dim);
+  }
+  .tags {
+    color: var(--dim);
+  }
+  .links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+</style>
