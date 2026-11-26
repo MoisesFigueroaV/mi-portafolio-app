@@ -1,0 +1,15 @@
+---
+/** Fila con fecha a la izquierda y contenido a la derecha. */
+import T from "./T.astro";
+import type { L } from "@/data/site";
+
+interface Props {
+  when: string | L;
+}
+const { when } = Astro.props;
+---
+
+<div class="row">
+  <span class="when">{typeof when === "string" ? when : <T t={when} />}</span>
+  <div class="what"><slot /></div>
+</div>

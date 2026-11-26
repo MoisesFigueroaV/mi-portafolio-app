@@ -1,0 +1,31 @@
+---
+/**
+ * Texto bilingüe. Genera las dos versiones; el CSS muestra solo la del idioma activo.
+ *   <T t={{ en: "Hello", es: "Hola" }} />
+ *   <T t={texto} as="p" html />   (html: el texto trae enlaces)
+ */
+import type { L } from "@/data/site";
+
+interface Props {
+  t: L;
+  as?: "span" | "p" | "div" | "h1" | "h2" | "h3" | "li";
+  html?: boolean;
+  class?: string;
+}
+
+const { t, as: Tag = "span", html = false, class: className } = Astro.props;
+---
+
+{
+  html ? (
+    <>
+      <Tag data-l="en" lang="en" class={className} set:html={t.en} />
+      <Tag data-l="es" lang="es" class={className} set:html={t.es} />
+    </>
+  ) : (
+    <>
+      <Tag data-l="en" lang="en" class={className}>{t.en}</Tag>
+      <Tag data-l="es" lang="es" class={className}>{t.es}</Tag>
+    </>
+  )
+}

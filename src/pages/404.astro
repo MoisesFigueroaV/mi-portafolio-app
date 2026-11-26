@@ -1,0 +1,20 @@
+---
+import Base from "@/layouts/Base.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import T from "@/components/T.astro";
+
+const title = { en: "Page not found", es: "Página no encontrada" };
+---
+
+<Base title={title}>
+  <SubHeader title={title}>
+    <T
+      t={{
+        en: "This page fell down the shaft. Head back to the start.",
+        es: "Esta página se cayó por el pozo. Vuelve al inicio.",
+      }}
+      as="p"
+    />
+  </SubHeader>
+  <a href="/">← <T t={{ en: "Home", es: "Inicio" }} /></a>
+</Base>

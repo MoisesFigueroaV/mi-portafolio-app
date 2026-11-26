@@ -1,0 +1,17 @@
+---
+/** Cabecera de las subpáginas: volver al inicio + título. */
+import Avatar from "./Avatar.astro";
+import T from "./T.astro";
+import { profile, type L } from "@/data/site";
+
+interface Props {
+  title: L;
+}
+const { title } = Astro.props;
+---
+
+<header class="page-head">
+  <a class="back" href="/"><Avatar size={28} /> {profile.name}</a>
+  <T t={title} as="h1" />
+  <slot />
+</header>

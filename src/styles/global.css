@@ -1,0 +1,357 @@
+/* Tokens de color. El tema se define con data-theme en <html> (lo fija un script antes del primer pintado). */
+:root,
+:root[data-theme="dark"] {
+  --bg: #060609;
+  --fg: #f4f3f8;
+  --body: rgba(236, 234, 244, 0.66);
+  --dim: rgba(236, 234, 244, 0.42);
+  --line: rgba(255, 255, 255, 0.09);
+  --accent: #8ea2ff;
+  --veil-1: rgba(6, 6, 9, 0.82);
+  --veil-2: rgba(6, 6, 9, 0.45);
+  --veil-3: rgba(6, 6, 9, 0.08);
+  --lid: #030305;
+  --avatar-bg: #e9e7ef;
+  --bg-opacity: 0.62;
+  --surface: rgba(255, 255, 255, 0.04);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #eeeef4;
+  --fg: #15141b;
+  --body: rgba(21, 20, 27, 0.72);
+  --dim: rgba(21, 20, 27, 0.48);
+  --line: rgba(21, 20, 27, 0.1);
+  --accent: #3f50cc;
+  --veil-1: rgba(238, 238, 244, 0.86);
+  --veil-2: rgba(238, 238, 244, 0.52);
+  --veil-3: rgba(238, 238, 244, 0.1);
+  --lid: #d9d9e4;
+  --avatar-bg: #dcdbe6;
+  --bg-opacity: 0.75;
+  --surface: rgba(21, 20, 27, 0.04);
+  color-scheme: light;
+}
+
+:root {
+  --font: "Geist", "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Idioma: ambos se generan; se oculta el que no corresponde */
+html[data-lang="en"] [data-l="es"],
+html[data-lang="es"] [data-l="en"] {
+  display: none !important;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent);
+}
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  color: var(--fg);
+  text-wrap: balance;
+}
+p {
+  margin: 0;
+}
+
+/* Fondo animado */
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+  opacity: var(--bg-opacity);
+}
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 34rem 60% at 50% 45%, var(--veil-1), var(--veil-2) 60%, var(--veil-3));
+}
+
+/* Controles de idioma y tema */
+.prefs {
+  position: fixed;
+  top: calc(22px + env(safe-area-inset-top, 0px));
+  right: max(24px, env(safe-area-inset-right, 0px));
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+.prefs i {
+  font-style: normal;
+  color: var(--dim);
+}
+.prefs button {
+  all: unset;
+  cursor: pointer;
+  color: var(--dim);
+  transition: color 0.2s;
+}
+.prefs button:hover {
+  color: var(--body);
+}
+.prefs button[aria-pressed="true"] {
+  color: var(--fg);
+}
+.prefs button:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+.prefs .theme {
+  margin-left: 10px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+}
+.prefs .theme svg {
+  width: 14px;
+  height: 14px;
+}
+html[data-theme="dark"] .prefs .sun,
+html[data-theme="light"] .prefs .moon {
+  display: none;
+}
+
+/* Parpadeo al cambiar idioma o tema */
+.lid {
+  position: fixed;
+  left: -10%;
+  right: -10%;
+  height: 56%;
+  z-index: 6;
+  pointer-events: none;
+  background: var(--lid);
+  will-change: transform;
+}
+.lid.top {
+  top: 0;
+  transform: translateY(-110%);
+  border-radius: 0 0 50% 50% / 0 0 40% 40%;
+  box-shadow: 0 12px 40px 12px var(--lid);
+}
+.lid.bot {
+  bottom: 0;
+  transform: translateY(110%);
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  box-shadow: 0 -12px 40px 12px var(--lid);
+}
+.lid.top.close,
+.lid.bot.close {
+  transition: transform 0.2s cubic-bezier(0.55, 0, 0.9, 0.4);
+  transform: translateY(0);
+}
+.lid.open {
+  transition: transform 0.34s cubic-bezier(0.15, 0.6, 0.3, 1);
+}
+main.wake {
+  animation: wake 0.5s ease-out;
+}
+@keyframes wake {
+  from {
+    filter: blur(3px);
+    opacity: 0.6;
+  }
+  to {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* Columna principal */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-block: 88px 64px;
+  display: grid;
+  gap: 52px;
+}
+.section-title {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+.rows {
+  display: grid;
+  gap: 30px;
+  margin-top: 22px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 0 16px;
+}
+.row .when {
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+.row .what {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.row .t {
+  color: var(--fg);
+}
+.row .meta,
+.row .tags {
+  color: var(--dim);
+}
+.row .meta {
+  margin-top: -4px;
+  font-size: 13px;
+}
+.arrow {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 11px;
+  transform: translateY(-1px);
+}
+.prose a,
+.inline-links a {
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 25%, transparent);
+}
+.prose a:hover,
+.inline-links a:hover {
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+.stack-p > * + * {
+  margin-top: 10px;
+}
+
+/* Cabecera de subpáginas */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dim);
+}
+.back:hover {
+  color: var(--fg);
+  text-decoration: none;
+}
+.page-head {
+  display: grid;
+  gap: 18px;
+}
+.page-head h1 {
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+footer.site {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-block: 16px 72px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--dim);
+}
+footer.site nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+footer.site a {
+  color: var(--dim);
+}
+footer.site a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 460px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .row .when {
+    margin-bottom: 4px;
+  }
+  main {
+    padding-top: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.wake {
+    animation: none;
+  }
+  .lid {
+    display: none;
+  }
+}
+
+/* Código en artículos: Shiki genera dos temas */
+.astro-code {
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  overflow-x: auto;
+  font-size: 12.5px;
+}
+html[data-theme="dark"] .astro-code,
+html[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}

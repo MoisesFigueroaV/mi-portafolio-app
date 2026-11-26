@@ -1,0 +1,34 @@
+---
+import Base from "@/layouts/Base.astro";
+import Row from "@/components/Row.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import T from "@/components/T.astro";
+import { formatDate, getPosts, pick } from "@/lib/writing";
+
+const posts = await getPosts();
+const title = { en: "Writing", es: "Escritos" };
+---
+
+<Base title={title} description={{ en: "Notes and articles about what I learn.", es: "Notas y artículos sobre lo que aprendo." }}>
+  <SubHeader title={title}>
+    <T t={{ en: "Notes and articles about what I learn.", es: "Notas y artículos sobre lo que aprendo." }} as="p" />
+  </SubHeader>
+
+  <section>
+    <div class="rows">
+      {
+        posts.map((p) => (
+          <Row when={formatDate(p.date)}>
+            <a class="t" href={`/writing/${p.slug}`}>
+              <T t={pick(p, "title")} />
+            </a>
+            <T t={pick(p, "excerpt")} as="p" />
+            <span class="tags">
+              {p.readingTime} min
+            </span>
+          </Row>
+        ))
+      }
+    </div>
+  </section>
+</Base>
